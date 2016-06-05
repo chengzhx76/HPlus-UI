@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+#忽略的文件及文件夹
+.idea
+*.iml
+#不忽略的文件
+!.gitignore
