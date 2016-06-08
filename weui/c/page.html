@@ -1,95 +1,96 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>单选/复选/开关</title>
- <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-  <link rel="stylesheet" href="../style/weui.css"/> <link rel="stylesheet" href="../style/weui2.css"/>
-      <script src="../zepto.min.js"></script>
-<script >
-$(function(){
-	$(document).on('tap','#audio_btn',function(){
-		 var music = document.getElementById("music"); 
-    if(music.paused){ 
-        music.play(); 
-        $("#music_btn").removeClass("icon-31").addClass("icon-30");
-    }else{ 
-        music.pause(); 
-        $("#music_btn").removeClass("icon-30").addClass("icon-31"); 
-    }
-	})
+  <meta charset="utf-8">
+  <title>单选/复选/开关</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="../style/weui.css"/>
+  <link rel="stylesheet" href="../style/weui2.css"/>
+  <script src="../zepto.min.js"></script>
+  <script>
+    $(function () {
+      $(document).on('tap', '#audio_btn', function () {
+        var music = document.getElementById("music");
+        if (music.paused) {
+          music.play();
+          $("#music_btn").removeClass("icon-31").addClass("icon-30");
+        } else {
+          music.pause();
+          $("#music_btn").removeClass("icon-30").addClass("icon-31");
+        }
+      })
 
 
-})
-</script>
+    })
+  </script>
 </head>
 
 <body ontouchstart>
 <div class="p bg-gray" style="height:32px;">
   <div class='pager  '>
-<div class="pager-left">
-<div class="pager-first"><a class="pager-nav">首页</a></div>
-<div class="pager-pre"><a  class="pager-nav">上一页</a></div>
-</div>
-<div class="pager-cen">1/120</div>
-<div class="pager-right">
-<div class="pager-next"><a class="pager-nav">下一页</a></div>
-<div class="pager-end"><a  class="pager-nav">尾页</a></div>
-</div>
-</div> 
+    <div class="pager-left">
+      <div class="pager-first"><a class="pager-nav">首页</a></div>
+      <div class="pager-pre"><a class="pager-nav">上一页</a></div>
+    </div>
+    <div class="pager-cen">1/120</div>
+    <div class="pager-right">
+      <div class="pager-next"><a class="pager-nav">下一页</a></div>
+      <div class="pager-end"><a class="pager-nav">尾页</a></div>
+    </div>
+  </div>
 
 </div>
-
 
 
 <!--分享一-->
-  <!--第一分享-->
-<div style="display:none;"  class="share" onclick="$(this).fadeOut();$(this).removeClass('ani-fade hand')">
-<div class="sharebox">
-点击右上角发送给指定朋友或分享到朋友圈 <i></i>
+<!--第一分享-->
+<div style="display:none;" class="share" onclick="$(this).fadeOut();$(this).removeClass('ani-fade hand')">
+  <div class="sharebox">
+    点击右上角发送给指定朋友或分享到朋友圈 <i></i>
+  </div>
 </div>
-</div> 
 <div class='p'>
-<a onclick="$('.share').show().addClass('ani-fade hand');" class="weui_btn weui_btn_primary" href="javascript:void(0)" ><i class='icon icon-9 f20'></i>分享给好友或朋友圈</a>
-</div>  
-    
-    <script>
-    $(function(){
-    	$(document).on('swipe','#item .weui_cell',function(){
-	
-	 $('.delete').hide()
-  $('.delete', this).show();
-	})
-$(document).on('tap','.delete',function(){
-	$(this).parent().parent('.weui_cell').remove();
-	})
-    
-    });
-    
-    </script>
-         <div class="weui_cells " id="item">
-        
-        
-                    <div class="weui_cell">
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>我来自中国的朋友</p>
-                </div>
-                <div class="weui_cell_ft"><a class='delete weui-btn weui_btn_mini weui_btn_primary f-white hide f25'><i class="icon icon-25 f20 bold"></i></a></div>
-            </div>   
-                <div class="weui_cell" >
-               
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>我是来自美国的朋友</p>
-                </div>
-                <div class="weui_cell_ft"><a class='delete weui-btn weui_btn_mini weui_btn_primary hide f-white f25'><i class="icon icon-25 f20 bold"></i></a></div>
-            </div>
-    
- </div> 
- 
- 
- 
- <div class="p">
- <audio id="music" src="data:audio/mp3;base64,/+MwwAAAAAJYAAAAAPBAEIIY9kMsncEECwAEZdtEHg8Eggp55//5jfMPPPdDDDDxoQnuYNDB8BgP
+  <a onclick="$('.share').show().addClass('ani-fade hand');" class="weui_btn weui_btn_primary"
+     href="javascript:void(0)"><i class='icon icon-9 f20'></i>分享给好友或朋友圈</a>
+</div>
+
+<script>
+  $(function () {
+    $(document).on('swipe', '#item .weui_cell', function () {
+
+      $('.delete').hide()
+      $('.delete', this).show();
+    })
+    $(document).on('tap', '.delete', function () {
+      $(this).parent().parent('.weui_cell').remove();
+    })
+
+  });
+
+</script>
+<div class="weui_cells" id="item">
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>我来自中国的朋友</p>
+    </div>
+    <div class="weui_cell_ft">
+      <a class='delete weui-btn weui_btn_mini weui_btn_primary f-white hide f25'>
+        <i class="icon icon-25 f20 bold"></i>
+      </a>
+    </div>
+  </div>
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>我是来自美国的朋友</p>
+    </div>
+    <div class="weui_cell_ft">
+      <a class='delete weui-btn weui_btn_mini weui_btn_primary hide f-white f25'><i class="icon icon-25 f20 bold"></i></a></div>
+  </div>
+</div>
+
+
+<div class="p">
+  <audio id="music" src="data:audio/mp3;base64,/+MwwAAAAAJYAAAAAPBAEIIY9kMsncEECwAEZdtEHg8Eggp55//5jfMPPPdDDDDxoQnuYNDB8BgP
 CCj57zxoZPPP5hhhnqYynuhhkwxv///////////////6GMo+NyY4D8S0gBmAAAgQCAoAQBFAoYkh
 Sh87DDWmJcGXTm1mjxkwm6Lw4FkRhzJgCBz2g4CmT4GUMgbUyBhCAGjX/+MgwI8WC2nwAUY4AYGi
 ygZkiMmgbwHqAGqADQMmgKngOKbCxUWNSBCETJwXCFwYGFEiMgwGBACGYAyJITqA0CHAWSJjJkwx
@@ -2707,43 +2708,67 @@ IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
 ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAA
 IAAgACAAIAAgACAAIAAgACAAIAAgACAA/+MgwP8AAAJYAAAAACAAIAAgACAAIAAgACAAIAAgACAA
 IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
-ACAAIAAgACAAIAAgAAD/CTQHAABL" autoplay="autoplay" loop="loop">你的浏览器不支持audio标签。</audio> 
-<a id="audio_btn"><span id="music_btn" class="icon f30 icon-31"></span></a>    
- </div>
- 
- <hr> 
- <script>
- $(function(){
- $('img').attr('src','data:image/jpg;base64,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');
- 
- $('.icon_praise_gray').click(function(){
- if($(this).parent().hasClass('praised')){
- $(this).parent().removeClass('praised');
- var  val = $(this).next().html();
-  $(this).next().html(parseInt(val)-1);
- }else{
- $(this).parent().addClass('praised');
-  var  val = $(this).next().html();
-  $(this).next().html(parseInt(val)+1);
- }
- 
- });
- })
- </script>
- <div class="p">
- <ul class="discuss_list">
- <li class="discuss_item"> 
- <div class="discuss_opr"> <span class="media_tool_meta tips_global meta_praise praised"> <i class="icon_praise_gray"></i> <span class="praise_num">11</span> </span> </div> <div class="user_info"> <strong class="nickname">马云</strong> <img class="avatar" src=""> </div> <div class="discuss_message"> <span class="discuss_status"></span> <div class="discuss_message_content">沙发</div> </div> <p class="discuss_extra_info">昨天  </p> 
- 
- <div class="reply_result"> <div class="nickname">马化腾回复</div> <div class="discuss_message"> <div class="discuss_message_content">来看我啦~</div> </div> <p class="discuss_extra_info">今天早上</p> </div>
-  </li>
- <li class="discuss_item"> 
- <div class="discuss_opr"> <span class="media_tool_meta tips_global meta_praise"> <i class="icon_praise_gray"></i> <span class="praise_num">0</span> </span> </div> <div class="user_info"> <strong class="nickname">李彦宏</strong> <img class="avatar" src=""> </div> <div class="discuss_message"> <span class="discuss_status"></span> <div class="discuss_message_content">板凳</div> </div> <p class="discuss_extra_info">未来时间  </p>  </li>
- 
- <li class="discuss_item"> 
- <div class="discuss_opr"> <span class="media_tool_meta tips_global meta_praise praised"> <i class="icon_praise_gray"></i> <span class="praise_num">999</span> </span> </div> <div class="user_info"> <strong class="nickname">刘强东</strong> <img class="avatar" src=""> </div> <div class="discuss_message"> <span class="discuss_status"></span> <div class="discuss_message_content">居然没抢到沙发</div> </div> <p class="discuss_extra_info">未来时间  </p>  </li>
- 
+ACAAIAAgACAAIAAgAAD/CTQHAABL" autoplay="autoplay" loop="loop">你的浏览器不支持audio标签。
+  </audio>
+  <a id="audio_btn"><span id="music_btn" class="icon f30 icon-31"></span></a>
+</div>
+
+<hr>
+<script>
+  $(function () {
+    $('img').attr('src', 'data:image/jpg;base64,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');
+
+    $('.icon_praise_gray').click(function () {
+      if ($(this).parent().hasClass('praised')) {
+        $(this).parent().removeClass('praised');
+        var val = $(this).next().html();
+        $(this).next().html(parseInt(val) - 1);
+      } else {
+        $(this).parent().addClass('praised');
+        var val = $(this).next().html();
+        $(this).next().html(parseInt(val) + 1);
+      }
+
+    });
+  })
+</script>
+<div class="p">
+  <ul class="discuss_list">
+    <li class="discuss_item">
+      <div class="discuss_opr"><span class="media_tool_meta tips_global meta_praise praised"> <i
+              class="icon_praise_gray"></i> <span class="praise_num">11</span> </span></div>
+      <div class="user_info"><strong class="nickname">马云</strong> <img class="avatar" src=""></div>
+      <div class="discuss_message"><span class="discuss_status"></span>
+        <div class="discuss_message_content">沙发</div>
+      </div>
+      <p class="discuss_extra_info">昨天 </p>
+
+      <div class="reply_result">
+        <div class="nickname">马化腾回复</div>
+        <div class="discuss_message">
+          <div class="discuss_message_content">来看我啦~</div>
+        </div>
+        <p class="discuss_extra_info">今天早上</p></div>
+    </li>
+    <li class="discuss_item">
+      <div class="discuss_opr"><span class="media_tool_meta tips_global meta_praise"> <i
+              class="icon_praise_gray"></i> <span class="praise_num">0</span> </span></div>
+      <div class="user_info"><strong class="nickname">李彦宏</strong> <img class="avatar" src=""></div>
+      <div class="discuss_message"><span class="discuss_status"></span>
+        <div class="discuss_message_content">板凳</div>
+      </div>
+      <p class="discuss_extra_info">未来时间 </p></li>
+
+    <li class="discuss_item">
+      <div class="discuss_opr"><span class="media_tool_meta tips_global meta_praise praised"> <i
+              class="icon_praise_gray"></i> <span class="praise_num">999</span> </span></div>
+      <div class="user_info"><strong class="nickname">刘强东</strong> <img class="avatar" src=""></div>
+      <div class="discuss_message"><span class="discuss_status"></span>
+        <div class="discuss_message_content">居然没抢到沙发</div>
+      </div>
+      <p class="discuss_extra_info">未来时间 </p></li>
+
   </ul>
-  </div> 
+</div>
 </body>
 </html>
