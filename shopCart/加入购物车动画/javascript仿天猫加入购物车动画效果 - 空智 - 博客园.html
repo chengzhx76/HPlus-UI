@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)http://www.cnblogs.com/tugenhua0707/p/4802738.html?utm_source=tuicool&utm_medium=referral -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>javascript仿天猫加入购物车动画效果 - 空智 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/bundle-Minyx2_Lite.css">
+<link type="text/css" rel="stylesheet" href="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/161525.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/tugenhua0707/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/tugenhua0707/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/tugenhua0707/wlwmanifest.xml">
+<script type="text/javascript" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/encoder.js"></script><script src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">var currentBlogApp = 'tugenhua0707', cb_enable_mathjax=true;</script>
+<script src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/blog-common.js" type="text/javascript"></script>
+<script src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/bundle-Minyx2_Lite.js" language="javascript" type="text/javascript"></script>
+<script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({
+  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+  TeX: { equationNumbers: { autoNumber: ['AMS'], useLabelIds: true } },
+  'HTML-CSS': { linebreaks: { automatic: true } },
+  SVG: { linebreaks: { automatic: true } }});</script><script type="text/javascript" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<a name="top"></a>
+
+
+<div id="container">
+    <a class="minyx" href="http://www.cnblogs.com/">代码改变世界</a>
+    <ul id="topMnu">
+        <!-- 统计数据 -->
+        <li>
+            
+                
+Posts - 169, 
+Articles - 1, 
+Comments - 776
+<!---->
+            
+        </li>
+        <!-- 这边可以增加一些链接 -->
+        <!-- 博客园 -->
+        <li><a href="http://www.cnblogs.com/">Cnblogs</a></li>
+        <!-- 管理 -->
+        <li id="topMnu-dashboard">
+            <a id="lnkDashboard" href="http://www.cnblogs.com/tugenhua0707/admin/EditPosts.aspx">Dashboard</a></li>
+        <li>
+            <a id="lnkLogin" href="http://passport.cnblogs.com/logout.aspx?ReturnUrl=http://www.cnblogs.com/tugenhua0707/p/4802738.html?utm_source=tuicool&utm_medium=referral">Logout</a></li>
+    </ul>
+
+    <script type="text/javascript">
+        var m = window.__blog.topMenuRendered;
+        if (m) { m(__$("topMnu")); }
+    </script>
+
+    <div id="header">
+        <ul id="menu">
+            <!-- 首页，当前section加上current类 -->
+            <li id="menu-home" class="current">
+                <a id="lnkHome" href="http://www.cnblogs.com/tugenhua0707/">Home</a></li>
+            <!-- 联系 -->
+            <li id="menu-contact">
+                <a id="lnkContact" href="http://space.cnblogs.com/msg/send/%e7%a9%ba%e6%99%ba">Contact</a></li>
+            <!-- 相册 -->
+            <li id="menu-gallary">
+                <a id="lnkGallery" href="http://www.cnblogs.com/tugenhua0707/gallery.html">Gallery</a></li>
+            <!-- Rss订阅 -->
+            <li id="rss">
+                <a id="lnkRss" href="http://www.cnblogs.com/tugenhua0707/rss">RSS</a></li>
+        </ul>
+        <div id="newmsg"></div>
+        <h1>
+            <!-- 主标题 -->
+            <a id="lnkBlogTitle" href="http://www.cnblogs.com/tugenhua0707/">空智</a>
+            <!-- 子标题 -->
+            <small>
+                </small>
+        </h1>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.headerRendered;
+        if (m) { m(__$("header")); }
+    </script>
+
+    <div id="wrapper">
+        <div id="content">
+            <script type="text/javascript">
+                var m = window.__blog.preRenderPosts;
+                if (m) { m(); }
+            </script>
+            
+<div id="post_detail">
+<div class="post" id="post">
+    <a name="top"></a>
+    <h2><a id="cb_post_title_url" href="http://www.cnblogs.com/tugenhua0707/p/4802738.html">javascript仿天猫加入购物车动画效果</a></h2>
+    <small>2015-09-12 11:21 by 空智, <span id="post_view_count">1084</span> 阅读, <span id="post_comment_count">0</span> 评论, <a href="http://www.cnblogs.com/tugenhua0707/p/4802738.html?utm_source=tuicool&utm_medium=referral#" onclick="AddToWz(4802738);return false;">收藏</a>,  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4802738" rel="nofollow">编辑</a></small>
+    <div class="entry">
+        <div id="cnblogs_post_body"><p style="background: #55895B; color: #fff; font-size: 24px; height: 40px; line-height: 40px; padding-left: 12px; font-weight: bold;">javascript仿天猫加入购物车动画效果</p>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;"><strong><span style="color: #ff0000; background-color: #ffffff;">&nbsp; 注意：</span></strong>首先需要声明的是：代码原思路不是我写的，是在网上找的这种效果，自己使用代码封装了下而已；代码中都有注释，我们最主要的是理解抛物线的思路及在工作中完成这样的任务，最近需要做类似于天猫加入购物车动画效果，所以就在网上搜索了下，就看到类似的效果，就把代码截下来自己封装了下~~</span></p>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp; 如果想要了解抛物线的细节，我建议大家先 看下 张鑫旭 讲解的抛物线的文章，再来看如下JS代码，可能理解更深点~~</span></p>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;"><a style="color: red; font-size: 16px;" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/" target="_blank">http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/</a></span></p>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">首先我们来理解的是： 既然是抛物运动，那么 <strong>运动的元素肯定需要 "绝对定位"</strong>；配置的参数有如下：（<strong>依赖于Jquery或者zepto.js</strong>）</span></p>
+<table style="width: 100%;" border="1px solid #f5f5f5">
+<tbody>
+<tr>
+<td width="50%">&nbsp;<span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">配置项</span></td>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;含义</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;el</span></td>
+<td width="50%">&nbsp;<span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">需要运动的元素 {object | string} &nbsp;默认为null&nbsp;</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;offset</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;运动的元素在 X轴，Y轴的偏移位置</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;targetEl</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;终点目标元素&nbsp;这时就会自动获取该元素的left、top值，来表示移动元素在X，Y轴的偏移位置；设置了这个参数，offset将失效</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;duration</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;运动时间，默认为500毫秒</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;curvature</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;抛物线曲率，就是弯曲的程度，越接近于0越像直线，默认0.001</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;callback</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;运动完成后执行的回调函数</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;autostart</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;是否自动开始运动，默认为false</span></td>
+</tr>
+<tr>
+<td width="50%"><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;stepCallback</span></td>
+<td width="50%"><span style="font-size: 16px; font-family: &#39;Microsoft YaHei&#39;;">&nbsp;运动过程中执行的回调函数，this指向该对象，接受x，y参数，分别表示X，Y轴的偏移位置。</span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">&nbsp;JSFiddler效果如下：</span></p>
+<p><a style="color: red; font-size: 22px;" href="https://jsfiddle.net/longen/t6ocxpmk/embedded/result/" target="_blank">JS抛物线运动效果</a></p>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">下面是所有的JS代码：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">/*</span><span style="color: #008000;">
+ * 实现抛物线函数 Parabola
+ * 切记既然是抛物线运动，那么运动的元素需要绝对定位
+ * 具体了解抛物线 可以看张鑫旭的文章 
+ * http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/
+ </span><span style="color: #008000;">*/</span>
+<span style="color: #0000ff;">var</span> Parabola = <span style="color: #0000ff;">function</span><span style="color: #000000;">(opts){
+    </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.init(opts);
+};
+Parabola.prototype </span>=<span style="color: #000000;"> {
+    constructor: Parabola,
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * @fileoverview 页面初始化
+     * @param opts {Object} 配置参数
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    init: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(opts){
+        </span><span style="color: #0000ff;">this</span>.opts =  $.extend(defaultConfig, opts ||<span style="color: #000000;"> {});
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果没有运动的元素 直接return</span>
+        <span style="color: #0000ff;">if</span>(!<span style="color: #0000ff;">this</span><span style="color: #000000;">.opts.el) {
+            </span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
+        }
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 取元素 及 left top</span>
+        <span style="color: #0000ff;">this</span>.$el = $(<span style="color: #0000ff;">this</span><span style="color: #000000;">.opts.el);
+        </span><span style="color: #0000ff;">this</span>.$elLeft = <span style="color: #0000ff;">this</span>._toInteger(<span style="color: #0000ff;">this</span>.$el.css("left"<span style="color: #000000;">));
+        </span><span style="color: #0000ff;">this</span>.$elTop = <span style="color: #0000ff;">this</span>._toInteger(<span style="color: #0000ff;">this</span>.$el.css("top"<span style="color: #000000;">));
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 计算x轴，y轴的偏移量</span>
+        <span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">this</span><span style="color: #000000;">.opts.targetEl) {
+            </span><span style="color: #0000ff;">this</span>.diffX = <span style="color: #0000ff;">this</span>._toInteger($(<span style="color: #0000ff;">this</span>.opts.targetEl).css("left")) - <span style="color: #0000ff;">this</span><span style="color: #000000;">.$elLeft;
+            </span><span style="color: #0000ff;">this</span>.diffY = <span style="color: #0000ff;">this</span>._toInteger($(<span style="color: #0000ff;">this</span>.opts.targetEl).css("top")) - <span style="color: #0000ff;">this</span><span style="color: #000000;">.$elTop;
+        }</span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+            </span><span style="color: #0000ff;">this</span>.diffX = <span style="color: #0000ff;">this</span>.opts.offset[0<span style="color: #000000;">];
+            </span><span style="color: #0000ff;">this</span>.diffY = <span style="color: #0000ff;">this</span>.opts.offset[1<span style="color: #000000;">];
+        }
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 运动时间</span>
+        <span style="color: #0000ff;">this</span>.duration = <span style="color: #0000ff;">this</span><span style="color: #000000;">.opts.duration;
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 抛物线曲率</span>
+        <span style="color: #0000ff;">this</span>.curvature = <span style="color: #0000ff;">this</span><span style="color: #000000;">.opts.curvature;
+        
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 计时器</span>
+        <span style="color: #0000ff;">this</span>.timerId = <span style="color: #0000ff;">null</span><span style="color: #000000;">;
+        </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+         * 根据两点坐标以及曲率确定运动曲线函数（也就是确定a, b的值）
+         * 公式： y = a*x*x + b*x + c;
+         * 因为经过(0, 0), 因此c = 0
+         * 于是：
+         * y = a * x*x + b*x;
+         * y1 = a * x1*x1 + b*x1;
+         * y2 = a * x2*x2 + b*x2;
+         * 利用第二个坐标：
+         * b = (y2 - a*x2*x2) / x2
+         </span><span style="color: #008000;">*/</span>
+         <span style="color: #0000ff;">this</span>.b = (<span style="color: #0000ff;">this</span>.diffY - <span style="color: #0000ff;">this</span>.curvature * <span style="color: #0000ff;">this</span>.diffX * <span style="color: #0000ff;">this</span>.diffX) / <span style="color: #0000ff;">this</span><span style="color: #000000;">.diffX;
+
+         </span><span style="color: #008000;">//</span><span style="color: #008000;"> 是否自动运动</span>
+         <span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">this</span><span style="color: #000000;">.opts.autostart) {
+             </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.start();
+         }
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * @fileoverview 开始
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    start: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(){
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 开始运动</span>
+        <span style="color: #0000ff;">var</span> self = <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 设置起始时间 和 结束时间</span>
+        <span style="color: #0000ff;">this</span>.begin = (<span style="color: #0000ff;">new</span><span style="color: #000000;"> Date()).getTime();
+        </span><span style="color: #0000ff;">this</span>.end = <span style="color: #0000ff;">this</span>.begin + <span style="color: #0000ff;">this</span><span style="color: #000000;">.duration;
+        
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果目标的距离为0的话 就什么不做</span>
+        <span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">this</span>.diffX === 0 &amp;&amp; <span style="color: #0000ff;">this</span>.diffY === 0<span style="color: #000000;">) {
+            </span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
+        }
+        </span><span style="color: #0000ff;">if</span>(!!<span style="color: #0000ff;">this</span><span style="color: #000000;">.timerId) {
+            clearInterval(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">.timerId);
+            </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.stop();
+        }
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 每帧（对于大部分显示屏）大约16~17毫秒。默认大小是166.67。也就是默认10px/ms</span>
+        <span style="color: #0000ff;">this</span>.timerId = setInterval(<span style="color: #0000ff;">function</span><span style="color: #000000;">(){
+            </span><span style="color: #0000ff;">var</span> t = (<span style="color: #0000ff;">new</span><span style="color: #000000;"> Date()).getTime();
+            self.step(t);
+        },</span>16<span style="color: #000000;">);
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * @fileoverview 执行每一步
+     * @param {string} t 时间
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    step: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(t){
+        </span><span style="color: #0000ff;">var</span> opts = <span style="color: #0000ff;">this</span><span style="color: #000000;">.opts;
+        </span><span style="color: #0000ff;">var</span><span style="color: #000000;"> x,
+            y;
+        </span><span style="color: #008000;">//</span><span style="color: #008000;"> 如果当前运行的时间大于结束的时间</span>
+        <span style="color: #0000ff;">if</span>(t &gt; <span style="color: #0000ff;">this</span><span style="color: #000000;">.end) {
+            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 运行结束</span>
+            x = <span style="color: #0000ff;">this</span><span style="color: #000000;">.diffX;
+            y </span>= <span style="color: #0000ff;">this</span><span style="color: #000000;">.diffY;
+            </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.move(x,y);
+            </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.stop();
+            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 结束后 回调</span>
+            <span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">typeof</span> opts.callback === 'function'<span style="color: #000000;">) {
+                opts.callback.call(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">);
+            }
+        }</span><span style="color: #0000ff;">else</span><span style="color: #000000;"> {
+            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 每一步x轴的位置</span>
+            x = <span style="color: #0000ff;">this</span>.diffX * ((t - <span style="color: #0000ff;">this</span>.begin) / <span style="color: #0000ff;">this</span><span style="color: #000000;">.duration);
+            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 每一步y轴的位置 y = a * x *x + b*x + c; c = 0</span>
+            y = <span style="color: #0000ff;">this</span>.curvature * x * x + <span style="color: #0000ff;">this</span>.b *<span style="color: #000000;"> x;
+            </span><span style="color: #008000;">//</span><span style="color: #008000;"> 移动</span>
+            <span style="color: #0000ff;">this</span><span style="color: #000000;">.move(x,y);
+            </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">typeof</span> opts.stepCallback === 'function'<span style="color: #000000;">) {
+                opts.stepCallback.call(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">,x,y);
+            }
+        }
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * @fileoverview 给元素定位
+     * @param {x,y} x,y坐标
+     * @return this
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    move: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(x,y) {
+        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.$el.css({
+            </span>"position":'absolute'<span style="color: #000000;">,
+            </span>"left": <span style="color: #0000ff;">this</span>.$elLeft + x + 'px'<span style="color: #000000;">,
+            </span>"top": <span style="color: #0000ff;">this</span>.$elTop + y + 'px'<span style="color: #000000;">
+        });
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * 获取配置项
+     * @param {object} options配置参数
+     * @return {object} 返回配置参数项
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    getOptions: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(options){
+        </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">typeof</span> options !== "object"<span style="color: #000000;">) {
+            options </span>=<span style="color: #000000;"> {};
+        }
+        options </span>= $.extend(defaultConfig, options ||<span style="color: #000000;"> {});
+        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> options;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * 设置options
+     * @param options
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    setOptions: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(options) {
+        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.reset();
+        </span><span style="color: #0000ff;">if</span>(<span style="color: #0000ff;">typeof</span> options !== 'object'<span style="color: #000000;">) {
+            options </span>=<span style="color: #000000;"> {};
+        }
+        options </span>= $.extend(<span style="color: #0000ff;">this</span><span style="color: #000000;">.opts,options);
+        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.init(options);
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * 重置
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    reset: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(x,y) {
+        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.stop();
+        x </span>= x ? x : 0<span style="color: #000000;">;
+        y </span>= y ? y : 0<span style="color: #000000;">;
+        </span><span style="color: #0000ff;">this</span><span style="color: #000000;">.move(x,y);
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * 停止
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    stop: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(){
+        </span><span style="color: #0000ff;">if</span>(!!<span style="color: #0000ff;">this</span><span style="color: #000000;">.timerId){
+            clearInterval(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">.timerId);
+        }
+        </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">this</span><span style="color: #000000;">;
+    },
+    </span><span style="color: #008000;">/*</span><span style="color: #008000;">
+     * 变成整数
+     * isFinite() 函数用于检查其参数是否是无穷大。
+     </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+    _toInteger: </span><span style="color: #0000ff;">function</span><span style="color: #000000;">(text){
+        text </span>=<span style="color: #000000;"> parseInt(text);
+        </span><span style="color: #0000ff;">return</span> isFinite(text) ? text : 0<span style="color: #000000;">;
+    }
+};
+</span><span style="color: #0000ff;">var</span> defaultConfig =<span style="color: #000000;"> {
+    </span><span style="color: #008000;">//</span><span style="color: #008000;">需要运动的元素 {object | string}</span>
+    el: <span style="color: #0000ff;">null</span><span style="color: #000000;">,
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 运动的元素在 X轴，Y轴的偏移位置</span>
+    offset: [0,0<span style="color: #000000;">],
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 终点元素 </span>
+    targetEl: <span style="color: #0000ff;">null</span><span style="color: #000000;">,
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 运动时间，默认为500毫秒</span>
+    duration: 500<span style="color: #000000;">,
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 抛物线曲率，就是弯曲的程度，越接近于0越像直线，默认0.001</span>
+    curvature: 0.01<span style="color: #000000;">,
+    
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 运动后执行的回调函数</span>
+    callback: <span style="color: #0000ff;">null</span><span style="color: #000000;">,
+
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 是否自动开始运动，默认为false</span>
+    autostart: <span style="color: #0000ff;">false</span><span style="color: #000000;">,
+    
+    </span><span style="color: #008000;">//</span><span style="color: #008000;"> 运动过程中执行的回调函数，this指向该对象，接受x，y参数，分别表示X，Y轴的偏移位置。</span>
+    stepCallback: <span style="color: #0000ff;">null</span><span style="color: #000000;">
+};</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">HTML代码如下：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="btns"</span><span style="color: #ff0000;"> style</span><span style="color: #0000ff;">="margin-top:20px"</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="#"</span><span style="color: #ff0000;"> id</span><span style="color: #0000ff;">="reset"</span><span style="color: #0000ff;">&gt;</span>重置<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="#"</span><span style="color: #ff0000;"> id</span><span style="color: #0000ff;">="run"</span><span style="color: #0000ff;">&gt;</span>开始运动<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="#"</span><span style="color: #ff0000;"> id</span><span style="color: #0000ff;">="stop"</span><span style="color: #0000ff;">&gt;</span>停止运动<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">a </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="#"</span><span style="color: #ff0000;"> id</span><span style="color: #0000ff;">="setOptions"</span><span style="color: #0000ff;">&gt;</span>设置配置参数<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">a</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="boll"</span><span style="color: #ff0000;"> class</span><span style="color: #0000ff;">="boll"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="target"</span><span style="color: #ff0000;"> class</span><span style="color: #0000ff;">="target"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="font-family: &#39;Microsoft YaHei&#39;; font-size: 16px;">JS初始化如下方式：</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">var</span> bool = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Parabola({
+    el: </span>"#boll"<span style="color: #000000;">,
+    offset: [</span>500, 100<span style="color: #000000;">],
+    duration: </span>500<span style="color: #000000;">,
+    curvature: </span>0.005<span style="color: #000000;">,
+    callback:</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(){
+        alert(</span>"完成后回调"<span style="color: #000000;">)
+    },
+    stepCallback:</span><span style="color: #0000ff;">function</span><span style="color: #000000;">(x,y){
+                
+        $(</span>"&lt;div&gt;").appendTo("body"<span style="color: #000000;">).css({
+            </span>"position": "absolute"<span style="color: #000000;">,
+            </span>"top": <span style="color: #0000ff;">this</span>.$elTop + y + 'px'<span style="color: #000000;">,
+            </span>"left":<span style="color: #0000ff;">this</span>.$elLeft + x + 'px'<span style="color: #000000;">,
+            </span>"background-color":"#CDCDCD"<span style="color: #000000;">,
+            </span>"width":"5px"<span style="color: #000000;">,
+            </span>"height":"5px"<span style="color: #000000;">,
+            </span>"border-radius": "5px"<span style="color: #000000;">
+        });
+                
+    }
+});
+$(</span>"#reset").click(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (event) {
+    event.preventDefault();
+    bool.reset();
+});
+$(</span>"#run").click(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (event) {
+    event.preventDefault();
+    bool.start();
+});
+$(</span>"#stop").click(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (event) {
+    event.preventDefault();
+    bool.stop();
+});
+$(</span>"#setOptions").click(<span style="color: #0000ff;">function</span><span style="color: #000000;"> (event) {
+    event.preventDefault();
+    bool.setOptions({
+        targetEl: $(</span>"#target"<span style="color: #000000;">),
+        curvature: </span>0.001<span style="color: #000000;">,
+        duration: </span>1000<span style="color: #000000;">
+    });
+});</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><a style="color: red; font-size: 20px; font-weight: bold;" href="http://files.cnblogs.com/files/tugenhua0707/%E5%8A%A0%E5%85%A5%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%8A%A8%E7%94%BB.zip">JS源码下载</a></p></div><div id="MySignature"></div>
+        <div class="clear"></div>
+        <div id="blog_post_info_block">
+        <div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4802738,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E7%A9%BA%E6%99%BA" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/tugenhua0707/" target="_blank"><img src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/20160306101106.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/tugenhua0707/">空智</a><br>
+<a href="http://home.cnblogs.com/u/tugenhua0707/followees">关注 - 20</a><br>
+<a href="http://home.cnblogs.com/u/tugenhua0707/followers">粉丝 - 584</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4802738,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+	<div class="buryit" onclick="votePost(4802738,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+        <div class="clear"></div>
+        <div id="post_next_prev"><a href="http://www.cnblogs.com/tugenhua0707/p/4793265.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/tugenhua0707/p/4793265.html" title="发布于2015-09-08 23:02">30分钟手把手教你学webpack实战</a><br><a href="http://www.cnblogs.com/tugenhua0707/p/4883999.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/tugenhua0707/p/4883999.html" title="发布于2015-10-15 23:40">CSS2-3常见的demo列子总结</a><br></div>
+    </div>
+</div>
+    <ul class="postmetadata">
+        <li class="icon_cat" id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/tugenhua0707/category/536189.html">javascript</a></li>
+        <li class="icon_bullet" id="EntryTag">标签: <a href="http://www.cnblogs.com/tugenhua0707/tag/javascript%E4%BB%BF%E5%A4%A9%E7%8C%AB%E5%8A%A0%E5%85%A5%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C/">javascript仿天猫加入购物车动画效果</a></li>
+    </ul>
+</div>
+<script type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=161525,cb_entryId=4802738,cb_blogApp=currentBlogApp,cb_blogUserGuid='0bb325ba-be0e-e311-8d02-90b11c0b17d6',cb_entryCreatedDate='2015/9/12 11:21:00';loadViewCount(cb_entryId);</script>
+<script type="text/javascript">
+    var m = window.__blog.postRendered;
+    if (m) { m(__$("post")); }
+</script>
+<script type="text/javascript">
+    var m = window.__blog.postRenderPosts;
+    if (m) { m(); }
+</script>
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/tugenhua0707/p/4802738.html?utm_source=tuicool&utm_medium=referral#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/tugenhua0707/p/4802738.html?utm_source=tuicool&utm_medium=referral#top">返回顶部</a></div>
+<div id="comment_form_container">
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color:Red"></span>
+<p>
+昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="Bill.cheng">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/quote.gif" alt="引用" title="添加引用" onclick="insertUBB(&#39;tbCommentBody&#39;,&#39;quote&#39;)">
+<img id="ubb_bold" class="comment_icon" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/b.png" alt="粗体" title="添加粗体" onclick="insertUBB(&#39;tbCommentBody&#39;,&#39;b&#39;)">
+<img id="ubb_url" class="comment_icon" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl(&#39;tbCommentBody&#39;)">
+<img id="ubb_indent" class="comment_icon" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent(&#39;tbCommentBody&#39;)">
+<img id="ubb_code" class="comment_icon" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/InsertCode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/img.gif" alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+<span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
+<a href="javascript:void(0);" onclick="return logout();">退出登录</a>
+        <a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您" onclick="commentManager.Subscribe()">订阅评论</a>
+</p>
+<div id="tip_comment2" style="color:Red"></div>
+<p>
+[Ctrl+Enter快捷键提交]
+</p>
+<div style="display:none">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/547024/" target="_blank">丁丁租房已全部并入链家</a><br> ·  <a href="http://news.cnblogs.com/n/547023/" target="_blank">阿里机器人现身浙江法院庭审现场做笔录</a><br> ·  <a href="http://news.cnblogs.com/n/547022/" target="_blank">Windows 10应用商店开放自定义下载位置</a><br> ·  <a href="http://news.cnblogs.com/n/547021/" target="_blank">英特尔Apollo Lake处理器曝光：性能涨30%</a><br> ·  <a href="http://news.cnblogs.com/n/547020/" target="_blank">人人第一财季净亏损1590万美元 营收下滑30%</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/536334/" target="_blank">高效编程之道：好好休息</a><br> ·  <a href="http://kb.cnblogs.com/page/545476/" target="_blank">快速学习者的高效学习策略</a><br> ·  <a href="http://kb.cnblogs.com/page/545784/" target="_blank">一个前端的自我修养</a><br> ·  <a href="http://kb.cnblogs.com/page/543110/" target="_blank">架构漫谈（九）：理清技术、业务和架构的关系</a><br> ·  <a href="http://kb.cnblogs.com/page/542725/" target="_blank">架构漫谈（八）：从架构的角度看如何写好代码</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.contentRendered;
+            if (m) { m(__$("content")); }
+        </script>
+
+        <div id="sidebar">
+            
+<div id="about">
+<div>
+<h2 id="about_title">About</h2>
+<div id="about_body">
+<div id="blog-news"><div class="add-default">
+  <div style="float: left; margin-right: 5px; width: 190px;">
+  <!--<img width="220" height="252" src="http://upload.cnblogs.com/will-crop-avatar/561794/561794-20151025005354052-661052536.png?id=1445705746382967" alt="" />-->
+<img width="190" height="270" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/561794-20160101202220667-1145590784.jpg">
+</div>
+<div>
+<label>姓名</label>：涂根华<br>
+<label>所在地</label>：浙江- 杭州<br>
+<label>所在职位</label>：前端攻城师<br>
+<label>常用邮箱</label>：879083421@qq.com<br>
+<label>婚姻</label>：single~~<br>
+<label>兴趣爱好</label>：web前端、旅游等.<br>
+<label>人生格言</label>：1. 路漫漫其修远兮,吾将上下而求索<br>2. 居安思危 思则有备,<br>3. 求知若饥 虚心若愚,想做成任何事情，只要方向正确，只要能坚持，能像愚公愚山那样的精神就好~每天一点点学，一点点积累，只要能坚持下来定会把事情做好~<br>
+<label>最近的目标：</label>深入研究HTML+CSS+JS基本原理及相应的demo，及研究nodeJS<br>
+<label>前端技术介绍：</label>
+目前已工作5年的前端开发，对前端开发有自己的见解，认真踏实的工作，对前端逐渐深入的研究其基本原理。<br>
+</div>
+</div><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/tugenhua0707/">空智</a><br>园龄：<a href="http://home.cnblogs.com/u/tugenhua0707/" title="入园时间：2013-08-27">2年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/tugenhua0707/followers/">584</a><br>关注：<a href="http://home.cnblogs.com/u/tugenhua0707/followees/">20</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;0bb325ba-be0e-e311-8d02-90b11c0b17d6&#39;)">+加关注</a></div></div></div>
+<script type="text/javascript">loadBlogNews();</script>
+</div>
+</div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.aboutRendered;
+                if (m) { m(__$("about")); }
+            </script>
+            
+<div id="mySearchWrapper">
+    <div id="mySearch">
+        <input type="image" src="../../../../../Users/光灿/Desktop/加入购物车动画/javascript仿天猫加入购物车动画效果%20-%20空智%20-%20博客园_files/btnsearch.gif" id="btnZzk" class="submit" onclick="zzk_go();return false;">
+        <label class="lb_search"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="keyword"></label>
+    </div>
+</div>
+
+            <script type="text/javascript">
+                var m = window.__blog.searchFormRendered;
+                if (m) { m(__$("searchform")); }
+            </script>
+            <div id="sideMain">
+            <div id="side-recent-posts">
+        <h2>最新随笔</h2>
+        <ul class="bullet">
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5568734.html">移动端开发适配总结</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5562548.html">gulp进阶构建项目由浅入深</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5538761.html">css3 实现逐帧动画</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5507250.html">jQuery1.9.1源码分析--数据缓存Data模块</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5444722.html">nodejs开发指南读后感</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5385261.html">css3动画由浅入深总结</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5272539.html">浅谈javascript函数节流</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5260411.html">理解CSS3中的background－size(对响应性图片等比例缩放)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5256367.html">Gulp实现web服务器</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5204568.html">移动端事件介绍</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5198407.html">Javascript设计模式详解</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5180841.html">H5移动端知识点总结</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5156179.html">【干货理解】理解javascript中实现MVC的原理</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5135533.html">[干货]数据交互与本地存储</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5068449.html">深入理解Javascript面向对象编程</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5052808.html">javascript数组的知识点讲解</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5046854.html">javascript函数式编程要掌握的知识点讲解</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/5037811.html">深入浅出的javascript的正则表达式学习教程</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/4982646.html">Gulp解决发布线上文件(CSS和JS)缓存问题</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/p/4883999.html">CSS2-3常见的demo列子总结</a></li>
+        </ul>
+    </div><div id="side-recent-comments">
+        <h2>最新评论</h2>
+        <ul class="voice">
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4067220.html#3449282">Re:requireJS(版本是2.1.15)学习教程(一)</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4067220.html#3449282">
+                        楼主内容写的很好，例子也全面，就是第五点config里面的app.js配置有手误require(['app/d'],function(dss){ console.log(d);});f......
+                        -- Edda
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3449086">Re:移动端开发适配总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3449086">
+                        @孟回头
+恩恩 是的  你讲的很有道理 你可以试试淘宝首页 你在电脑上一直按ctrl+ + 把页面放大吧 有一部分页面 也会看不到哦 ~  这样是不是淘宝首页是不是也是bug哦~  呵呵~
+                        -- 空智
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3449084">Re:移动端开发适配总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3449084">
+                        安卓老人手机把系统字体设置最大。
+rem不见各种bug!
+                        -- 孟回头
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3449011">Re:移动端开发适配总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3449011">
+                        哦，原来如此，我就说，搞这么大，那定不得大到只能显示几个字符了
+                        -- 寻风问雨
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3448820">Re:移动端开发适配总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3448820">
+                        @寻风问雨
+移动设备默认是16px的  我们把它设置成默认100px是针对320px移动设备来讲的
+                        -- 空智
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3448810">Re:移动端开发适配总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5568734.html#3448810">
+                        默认font-size:100px确定不是10x,12px？
+                        -- 寻风问雨
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5562548.html#3447624">Re:gulp进阶构建项目由浅入深</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5562548.html#3447624">
+                        @马斯塔
+生成的目录是 build/js/*.js
+                        -- 空智
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5562548.html#3447503">Re:gulp进阶构建项目由浅入深</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5562548.html#3447503">
+                        使用这个选项后gulp.src("src/js/*.js",{ base: 'src' })，生成的目录不是.pipe(gulp.dest('build'));里面的 build/js/*.js ，而......
+                        -- 马斯塔
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5562548.html#3447234">Re:gulp进阶构建项目由浅入深</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5562548.html#3447234">
+                        使用connect的时候，app.js怎么写，如果使用debug模块，怎么和livereload结合到一块？
+                        -- 幕三少
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4793265.html#3442733">Re:30分钟手把手教你学webpack实战</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4793265.html#3442733">
+                        babal那块少加了es2015,总体很容易看懂，感谢
+                        -- 七夜哥哥
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5180841.html#3438418">Re:H5移动端知识点总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5180841.html#3438418">
+                        写的真全。赞一个
+                        -- 静逸
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5260411.html#3438350">Re:理解CSS3中的background－size(对响应性图片等比例缩放)</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5260411.html#3438350">
+                        最后的例子真心不错！
+                        -- 静逸
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4050072.html#3425230">Re:Git使用教程</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4050072.html#3425230">
+                        楼主写的很好，学习了
+                        -- hgbgfg
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5272539.html#3409119">Re:浅谈javascript函数节流</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5272539.html#3409119">
+                        这边每次执行的时候，把cleartimerout了，所以并不会间隔50ms执行吧？假设onResize函数17ms触发一次，第一次0ms的时间触发，然后搞了个定时器，然后下一次17ms的时候又触发了一......
+                        -- 1520006273
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5385261.html#3407277">Re:css3动画由浅入深总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5385261.html#3407277">
+                        mark。。。like。。。。
+                        -- JaneEyre
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/5385261.html#3406833">Re:css3动画由浅入深总结</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/5385261.html#3406833">
+                        赞，已经把动画效果用到我的头像上了。
+                        -- 天外归云
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4050072.html#3406354">Re:Git使用教程</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4050072.html#3406354">
+                        你好，我刚刚接触msysGit这个软件，然后其中你说的那个把txt里面的内容存入库中的这个功能，我在敲下命令退不回来了，且还没实现功能，劳烦您有空的时候帮我看看这是什么问题[img][/img]
+                        -- hanon
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4771528.html#3398719">Re:ES6的promise对象研究</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4771528.html#3398719">
+                        @瑾秀年华$.ajax({ url: ', type:'POST', dataType:'json' }).then(function(data){ console.log(data......
+                        -- 空智
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4050072.html#3393027">Re:Git使用教程</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4050072.html#3393027">
+                        真的学到了，楼主写的很细致
+...真的不用加上一句楼主好人一生平安？
+                        -- 吾辈丶何以为战
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.cnblogs.com/tugenhua0707/p/4793265.html#3392670">Re:30分钟手把手教你学webpack实战</a>
+                    <br>
+                    <a class="child" href="http://www.cnblogs.com/tugenhua0707/p/4793265.html#3392670">
+                        @clumiere
+我按照你的方法图片路径还有问题，求救，被这个图片路径搞的好头疼
+                        -- 咸鱼老弟
+                    </a>
+                </li>
+        </ul>
+    </div></div>
+            <div id="sideRight">
+            <div id="side-archives">
+        <h2>随笔档案</h2>
+        <ul class="date">
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2016/06.html">2016年6月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2016/05.html">2016年5月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2016/04.html">2016年4月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2016/03.html">2016年3月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2016/02.html">2016年2月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2016/01.html">2016年1月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/12.html">2015年12月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/11.html">2015年11月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/10.html">2015年10月(1)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/09.html">2015年9月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/08.html">2015年8月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/07.html">2015年7月(9)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/06.html">2015年6月(6)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/05.html">2015年5月(11)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/04.html">2015年4月(9)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/03.html">2015年3月(8)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/02.html">2015年2月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2015/01.html">2015年1月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/12.html">2014年12月(4)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/11.html">2014年11月(6)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/10.html">2014年10月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/09.html">2014年9月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/08.html">2014年8月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/07.html">2014年7月(6)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/06.html">2014年6月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/05.html">2014年5月(3)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/04.html">2014年4月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/03.html">2014年3月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/02.html">2014年2月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2014/01.html">2014年1月(13)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2013/12.html">2013年12月(14)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2013/11.html">2013年11月(7)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2013/10.html">2013年10月(5)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2013/09.html">2013年9月(2)</a></li>
+                <li><a href="http://www.cnblogs.com/tugenhua0707/archive/2013/08.html">2013年8月(10)</a></li>
+        </ul>
+    </div></div>
+            <div id="sideLeft">
+            <div id="side-categories">
+        <h2>随笔分类</h2>
+        <ul class="folder">
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/536191.html">CSS(9)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/626225.html">CSS3(9)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/626226.html">Ecmascript 6(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/536190.html">HTML(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/562154.html">HTML5(17)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/536189.html">javascript(79)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/713634.html">javascript设计模式的理解(4)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/664046.html">javascript数据结构与算法(9)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/765929.html">javascript正则表达式(1)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/626222.html">nodeJS(6)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/725509.html">ReactJS(3)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/626221.html">requireJS(2)</a>
+                </li>
+                <li>
+                    
+                    <a href="http://www.cnblogs.com/tugenhua0707/category/544573.html">前端项目工具(21)</a>
+                </li>
+        </ul>
+    </div><div id="side-top-posts-custom">
+    <h2>推荐排行榜</h2>
+    <div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/tugenhua0707/p/4050072.html">1. Git使用教程(107)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3969558.html">2. SVN使用教程总结(49)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4623317.html">3. Fiddler调式使用知多少(一)深入研究(48)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4501843.html">4. Javascript事件总结(26)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3485384.html">5. CSS2.0实现面包屑(15)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4637771.html">6. Fiddler实战深入研究(二)(12)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4306760.html">7. css3动画功能介绍(12)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4147569.html">8. 响应性web设计实战总结(11)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3489863.html">9. JS 仿腾讯发表微博的效果(11)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/5385261.html">10. css3动画由浅入深总结(11)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3442541.html">11. JS五星级评分效果(类似与淘宝打分效果)(10)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4540766.html">12. javascript客户端检测技术(10)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4361051.html">13. javascript数据结构与算法-- 二叉树(9)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3501175.html">14. JS仿QQ空间鼠标停在长图片时候图片自动上下滚动效果(8)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3391249.html">15. css实现气泡框效果(7)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3470234.html">16. JS编写简单的弹窗插件(含有demo和源码)(7)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/5260411.html">17. 理解CSS3中的background－size(对响应性图片等比例缩放)(7)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4067220.html">18. requireJS(版本是2.1.15)学习教程(一)(7)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/5046854.html">19. javascript函数式编程要掌握的知识点讲解(7)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/5037811.html">20. 深入浅出的javascript的正则表达式学习教程(7)</a></li></ul></div>
+</div><div id="side-top-posts">
+    <h2>阅读排行榜</h2>
+    <div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/tugenhua0707/p/4050072.html">1. Git使用教程(16226)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4623317.html">2. Fiddler调式使用知多少(一)深入研究(7034)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3969558.html">3. SVN使用教程总结(5038)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4501843.html">4. Javascript事件总结(4154)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3515292.html">5. JS图片延迟加载分析及简单的demo(3922)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4793265.html">6. 30分钟手把手教你学webpack实战(3914)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4540766.html">7. javascript客户端检测技术(3792)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3407741.html">8. JS时间轴效果(类似于qq空间时间轴效果)(3463)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3484685.html">9. CSS自适应布局(左右固定 中间自适应或者右侧固定 左侧自适应)(2808)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3346522.html">10. iframe之间通信问题及iframe自适应高度问题(2776)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3442541.html">11. JS五星级评分效果(类似与淘宝打分效果)(2729)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3470234.html">12. JS编写简单的弹窗插件(含有demo和源码)(2703)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4147569.html">13. 响应性web设计实战总结(2633)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4637771.html">14. Fiddler实战深入研究(二)(2554)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3489863.html">15. JS 仿腾讯发表微博的效果(2456)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3507957.html">16. AMD规范与CMD规范的区别(2396)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4605593.html">17. javascript和HTML5上传图片之前实现预览效果(2393)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3520955.html">18. JS仿淘宝详情页菜单条智能定位效果(2379)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/3424529.html">19. JS模拟下拉框select(2261)</a></li><li><a href="http://www.cnblogs.com/tugenhua0707/p/4067220.html">20. requireJS(版本是2.1.15)学习教程(一)(2255)</a></li></ul></div>
+</div>    
+    
+    
+    
+
+
+        
+<div id="side-link-561112">
+            <h2>HTML5 History</h2>
+            <ul class="chain">
+            </ul>
+        </div></div>
+            
+                <div id="sideContainer"></div>
+                <script type="text/javascript">
+                    $.ajax({
+                        url: '/' + currentBlogApp + '/mvc/blog/Minyx2_Lite_SideColumn.aspx',
+                        data: '{}',
+                        type: 'post',
+                        dataType: 'text',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                $("#sideContainer").html(data);
+                                loadBlogDefaultCalendar();
+                                loadBlogSideBlocks();
+                                var m = window.__blog.sideContainerRendered;
+                                if (m) { m(__$("sideContainer")); }
+                                window.__blog.sidebar.__layout();
+                            }
+                        }
+                    });
+
+                </script>
+            
+        </div>
+
+        <script type="text/javascript">
+            var m = window.__blog.sidebarRendered;
+            if (m) { m(__$("sidebar")); }
+        </script>
+
+        <div id="footer">
+            
+<p id="logoFoot">
+    <a href="http://www.spiga.com.mx/" title="Agencia Interactiva Spiga">www.spiga.com.mx</a>
+</p>
+<div class="footText">
+<p>
+Copyright ©2016 空智
+</p>
+<p>
+<a href="http://www.cnblogs.com/">博客园</a>
+</p>
+</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var m = window.__blog.wrapperRendered;
+        if (m) { m(__$("wrapper")); }
+    </script>
+
+</div>
+<script type="text/javascript">
+    var m = window.__blog.containerRendered;
+    if (m) { m(__$("container")); }
+</script>
+
+
+</body><div></div><div></div></html>
