@@ -1,0 +1,6 @@
+div#sidebar div#about div{overflow:hidden;}
+.add-default{width:100%;overflow:hidden;}
+#profile_block{display:none;}
+.add-default label {font-weight:700;}
+#cnblogs_post_body p{margin:0px !important auto;}
+#cnblogs_post_body ul li{list-style:none !important;}
