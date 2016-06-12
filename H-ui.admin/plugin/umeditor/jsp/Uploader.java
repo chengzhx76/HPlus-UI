@@ -1,19 +1,18 @@
 package com.baidu.ueditor.um;
 
+import org.apache.commons.fileupload.*;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileUploadBase.InvalidContentTypeException;
+import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.*;
+import org.apache.commons.fileupload.util.*;
+import sun.misc.BASE64Decoder;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import org.apache.commons.fileupload.*;
-import org.apache.commons.fileupload.FileUploadBase.InvalidContentTypeException;
-import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
-import org.apache.commons.fileupload.util.*;
-import org.apache.commons.fileupload.servlet.*;
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-
-
-import sun.misc.BASE64Decoder;
-import javax.servlet.http.HttpServletRequest;
 /**
  * UEditor文件上传辅助类
  *
