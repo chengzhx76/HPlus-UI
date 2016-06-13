@@ -92,8 +92,7 @@ Parabola.prototype = {
 	 */
 	step: function(t){
 		var opts = this.opts;
-		var x,
-			y;
+		var x, y;
 		// 如果当前运行的时间大于结束的时间
 		if(t > this.end) {
 			// 运行结束
