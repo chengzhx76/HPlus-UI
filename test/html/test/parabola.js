@@ -23,15 +23,10 @@ Parabola.prototype = {
 		this.$el = $(this.opts.el);
 		this.$elLeft = this._toInteger(this.$el.css("left"));
 		this.$elTop = this._toInteger(this.$el.css("top"));
-		//this.$elLeft = this._toInteger(this.$el.offset().left);
-		//this.$elTop = this._toInteger(this.$el.offset().top);
 		// 计算x轴，y轴的偏移量
 		if(this.opts.targetEl) {
-			//this.diffX = this._toInteger($(this.opts.targetEl).css("left")) - this.$elLeft;
-			//this.diffY = this._toInteger($(this.opts.targetEl).css("top")) - this.$elTop;
-
-			this.diffX = this._toInteger($(this.opts.targetEl).offset().left) - this.$elLeft + this._toInteger($(this.opts.targetEl).css("width"))/2 - this._toInteger(this.$el.css("width"))/2;
-			this.diffY = this._toInteger($(this.opts.targetEl).offset().top) - this.$elTop + this._toInteger($(this.opts.targetEl).css("height"))/2 - this._toInteger(this.$el.css("height"))/2;
+			this.diffX = this._toInteger($(this.opts.targetEl).css("left")) - this.$elLeft;
+			this.diffY = this._toInteger($(this.opts.targetEl).css("top")) - this.$elTop;
 		}else {
 			this.diffX = this.opts.offset[0];
 			this.diffY = this.opts.offset[1];
@@ -92,7 +87,8 @@ Parabola.prototype = {
 	 */
 	step: function(t){
 		var opts = this.opts;
-		var x, y;
+		var x,
+			y;
 		// 如果当前运行的时间大于结束的时间
 		if(t > this.end) {
 			// 运行结束
@@ -100,7 +96,6 @@ Parabola.prototype = {
 			y = this.diffY;
 			this.move(x,y);
 			this.stop();
-			this.$el.remove() // 放入后销毁
 			// 结束后 回调
 			if(typeof opts.callback === 'function') {
 				opts.callback.call(this);
@@ -183,7 +178,6 @@ Parabola.prototype = {
 		text = parseInt(text);
         return isFinite(text) ? text : 0;
 	}
-
 };
 var defaultConfig = {
 	//需要运动的元素 {object | string}
@@ -208,7 +202,5 @@ var defaultConfig = {
 	autostart: false,
 	
 	// 运动过程中执行的回调函数，this指向该对象，接受x，y参数，分别表示X，Y轴的偏移位置。
-	stepCallback: null,
-
-	destory: null
+	stepCallback: null
 };

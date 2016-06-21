@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <link rel="stylesheet" type="text/css" href="http://wechat-static.1mxian.com/css/base_v2.css?0603">
+  <meta http-equiv="Pragma" contect="no-cache">
+  <script src="http://wechat-static.1mxian.com/js/framework/min/flexible.min.js?0415"></script>
+  <title>一米鲜</title>
+  <style>
+    body{
+      background-color: #f1f1f1;
+    }
+    .landing-page{
+      position: fixed;
+      top: 0rem;
+      left: 0rem;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1001
+    }
+    .bg{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0);
+      display: none;
+      z-index: 99;
+      top: 0px;
+      left: 0px;
+      -webkit-transition: all 0.3s ease-in-out;
+    }
+    .bg.show{
+      background-color: rgba(0,0,0,0.7);
+    }
+    .banner-slider-dots{
+      line-height: 0.625rem;
+      position: absolute;
+      bottom: 0px;
+      width: 6.25rem;
+      left: 50%;
+      margin-left: -3.125rem;
+      text-align: center;
+    }
+    .banner-dot-selected{
+      background-color: #fff !important;
+    }
+    .banner-slider-dots b{
+      display: inline-block;
+      margin: 0.125rem 0.125rem 0.0625rem 0.125rem;
+      width: 0.25rem;
+      height: 0.25rem;
+      border-radius: 0.15625rem;
+      background-color: rgba(255,255,255,0.7)
+    }
+    .banner-img{
+      width: 8.0rem;
+      display: block;
+    }
+    .fruit-center-area{
+      margin-bottom: 2rem;
+    }
+    .good{
+      position: relative;
+      width: 100%;
+      height: 2.6875rem;
+      background-color: #fff;
+      margin: 0px 0px 0.0625rem 0px;
+      box-sizing: border-box;
+    }
+    .good-img{
+      position: absolute;
+      width: 8.0rem;
+      height: 2.6875rem;
+      top: 0px;
+      left: 0px;
+      z-index: 10;
+    }
+    .good-img-nolazy{
+      position: absolute;
+      width: 8.0rem;
+      height: 2.6875rem;
+      top: 0px;
+      left: 0px;
+      z-index: 10;
+    }
+    .good-info-area{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      z-index: 15;
+      text-align: right;
+      width: 4.53125rem;
+      height: 2.6875rem;
+    }
+    .good-title{
+      width: 4.53125rem;
+      height: 0.65625rem;
+      line-height: 0.65625rem;
+      overflow: hidden;
+      font-size: 14px;
+      color: #333;
+      float: right;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    [data-dpr='2'] .good-title{
+      font-size: 28px;
+    }
+    [data-dpr='3'] .good-title{
+      font-size: 42px;
+    }
+    .good-specification{
+      font-size: 12px;
+      margin-left: 0.25rem;
+      color: #535353;
+      letter-spacing: -0.2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 4.53125rem;
+      float: right;
+      text-align: left;
+    }
+    [data-dpr='2'] .good-specification{
+      font-size: 24px;
+    }
+    [data-dpr='3'] .good-specification{
+      font-size: 36px;
+    }
+    .good-price-area{
+      position: absolute;
+      width: 4.53125rem;
+      height: 0.78125rem;
+      left: 0px;
+      bottom: 0px;
+      text-align: left;
+    }
+    .good-price{
+      font-size: 12px;
+      color: #ff5a1e;
+      display: inline-block;
+      vertical-align: bottom;
+      height: 0.78125rem;
+      line-height: 0.78125rem;
+      margin-right: 0.0625rem;
+    }
+    [data-dpr='2'] .good-price{
+      font-size: 24px;
+    }
+    [data-dpr='3'] .good-price{
+      font-size: 36px;
+    }
+    .good-price span{
+      font-size: 16px;
+    }
+    [data-dpr='2'] .good-price span{
+      font-size: 32px;
+    }
+    [data-dpr='3'] .good-price span{
+      font-size: 48px;
+    }
+    .old-price{
+      font-size: 10px;
+      color: #aaa;
+      display: inline-block;
+      vertical-align: bottom;
+      height: 0.75rem;
+      line-height: 0.75rem;
+    }
+    [data-dpr='2'] .old-price{
+      font-size: 20px;
+    }
+    [data-dpr='3'] .old-price{
+      font-size: 30px;
+    }
+    .old-price p{
+      text-decoration: line-through;
+    }
+    .good-left{
+      background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));
+      font-size: 12px;
+      color: #fff;
+      position: absolute;
+      bottom: 0px;
+      left: -3.46875rem;
+      width: 3.46875rem;
+      text-align: center;
+      margin-top: 0.0625rem;
+      overflow: hidden;
+      line-height: 0.625rem;
+    }
+    [data-dpr='2'] .good-left{
+      font-size: 24px;
+    }
+    [data-dpr='3'] .good-left{
+      font-size: 36px;
+    }
+    .good-cart{
+      width: 0.9rem;
+      height: 0.9rem;
+      display: inline-block;
+      box-sizing: border-box;
+      vertical-align: top;
+      border-radius: 0.9375rem;
+      text-align: center;
+      color: #fff;
+      font-size: 0.4rem;
+      line-height: 0.8125rem;
+      position: relative;
+    }
+    .good-cart-add{
+      background-size: 0.9rem 0.9rem;
+      box-shadow: 0px 0px 0.03125rem #aaa;
+    }
+    .good-cart-reduce{
+      background-size: 0.9rem 0.9rem;
+      box-shadow: 0px 0px 0.03125rem #aaa;
+    }
+    .good-cart i{
+      display: inline-block;
+      width: 0.8rem;
+      height: 0.8rem;
+      position: absolute;
+      left: 50%;
+      top:50%;
+      background-color: rgba(204,204,204,0.7);
+      line-height: 0.8rem;
+      text-align: center;
+      border-radius:50%;
+      font-style:normal;
+      margin: -0.4rem 0 0 -0.4rem;
+    }
+    .numchange{
+      width: 100%;
+    }
+    .good-cart-add i{
+      background-color: #ff5a1e;
+    }
+    .good-cart-add i.active{
+      background-color: #ff4400;
+    }
+    .good-cart-reduce i{
+      background-color: #D6D6D6;
+    }
+    .good-cart-reduce i.active{
+      background-color: #C3C3C3;
+    }
+    .good-cart-add i.disabled{
+      background-color: #D6D6D6;
+    }
+    .good-cart-btn{
+      position: absolute;
+      right: -0.03125rem;
+      padding: 0.9375rem 0.21875rem 0.15625rem 0.625rem;
+      z-index: 15;
+      bottom: 0.03125rem;
+    }
+    .good-cart-btn span{
+      margin: 0px 0.0625rem;
+      width: 0.6875rem;
+      height: 0.6875rem;
+      display: inline-block;
+      line-height: 0.9125rem;
+      text-align: center;
+      color: #535353;
+      font-size: 14px;
+    }
+    [data-dpr='2'] .good-cart-btn span{
+      font-size: 28px;
+    }
+    [data-dpr='3'] .good-cart-btn span{
+      font-size: 42px;
+    }
+    .good-cart-icon{
+      width: 0.71875rem;
+    }
+    .good-yushou-cart{
+      position: absolute;
+      right: 0.1875rem;
+      z-index: 15;
+      bottom: 0.1875rem;
+      width: 0.8125rem;
+      height: 0.8125rem;
+      border-radius: 0.9375rem;
+      text-align: center;
+      -webkit-transition: background-color 0.3s ease-in-out;
+      color: #fff;
+      font-size: 20px;
+      box-shadow: 0px 0px 0.0625rem #333;
+      box-sizing: border-box;
+      vertical-align: top;
+      background-color: rgba(204,204,204,0.7);
+    }
+    [data-dpr='2'] .good-yushou-cart{
+      font-size: 40px;
+    }
+    [data-dpr='3'] .good-yushou-cart{
+      font-size: 60px;
+    }
+    .good-yushou-cart-icon{
+      width: 0.8125rem;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+    .good-promotion-img{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 0.8125rem;
+      height: 0.8125rem;
+      z-index: 97;
+    }
+    .left-bar{
+      position: fixed;
+      top: 1.25rem;
+      left: 0px;
+      width: 2.0rem;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    .left-tab{
+      height: 1.40625rem;
+      width: 2.0rem;
+      color: #333;
+      font-size: 12px;
+      text-align: center;
+      box-sizing: border-box;
+      overflow: hidden;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    [data-dpr='2'] .left-tab{
+      font-size: 24px;
+    }
+    [data-dpr='3'] .left-tab{
+      font-size: 36px;
+    }
+    .left-tab.active{
+      background-color: #ff5a1e;
+      color: #fff;
+    }
+    .left-tab:last-child{
+      margin-bottom: 2.5rem;
+    }
+    .right-bar{
+      position: fixed;
+      right: 0px;
+      top: 1.25rem;
+      width: 8.0rem;
+      margin-top: 0.9375rem;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    .right-bar.hideadv{
+      margin-top: 0px;
+    }
+    .header{
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.5rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      background-color: #fff;
+      color: #666666;
+      z-index: 81;
+      box-shadow: 0px 0.03125rem 0.0625rem #aaa;
+      font-weight: 900;
+    }
+    .banner-area{
+      position: relative;
+      z-index: 80;
+      margin-bottom: 0.0625rem;
+    }
+    .mall-center{
+      position: relative;
+      z-index: 77;
+    }
+    .center{
+      letter-spacing: 0px;
+      background-color: #f8f8f8;
+      width: 10.0rem;
+      overflow: hidden;
+      z-index: 70;
+      margin-top: 1.25rem;
+    }
+    .location-area{
+      display: inline-block;
+      font-size: 14px;
+      float: left;
+      margin-left: 0.3125rem;
+      color: #333;
+    }
+    [data-dpr='2'] .location-area{
+      font-size: 28px;
+    }
+    [data-dpr='3'] .location-area{
+      font-size: 42px;
+    }
+    .location-area.active{
+      border: 1px solid #ff5a1e;
+    }
+    .location-area span{
+      max-width: 4.6875rem;
+      display: inline-block;
+      overflow: hidden;
+      height: 1.25rem;
+      vertical-align: top;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+      color: #ff5a1e;
+    }
+    [data-dpr='2'] .location-area span{
+      font-size: 28px;
+    }
+    [data-dpr='3'] .location-area span{
+      font-size: 42px;
+    }
+    .location_icon_img{
+      width: 0.6875rem;
+      vertical-align: middle;
+      margin-right: 0.15625rem;
+    }
+    .red-circle{
+      position: absolute;
+      right: 0.0625rem;
+      top: 0.15625rem;
+      background-color: red;
+      width: 0.25rem;
+      height: 0.25rem;
+      border-radius: 0.15625rem;
+    }
+    .adv-bar{
+      position: fixed;
+      top: 1.25rem;
+      right: 0px;
+      height: 0.9375rem;
+      width: 7.375rem;
+      background-color: rgba(255, 242, 152, 0.95);
+      text-align: left;
+      padding: 0px 0.3125rem;
+      color: #e50012;
+      line-height: 0.9375rem;
+      font-size: 0.375rem;
+      z-index: 98;
+    }
+    .adv-bar a{
+      color: #e50012;
+    }
+    .close-icon{
+      width: 0.46875rem;
+      float: right;
+      padding: 0.25rem 0.3125rem;
+      margin-right: -0.46875rem;
+    }
+    .pen_icon_img{
+      width: 0.375rem;
+      vertical-align: middle;
+      margin-left: 0.15625rem;
+    }
+    .vertical-box{
+      height: 1.40625rem;
+      vertical-align: middle;
+      display: inline-block;
+      width: 0.03125rem;
+    }
+    .left-tab-tips{
+      display: inline-block;
+      vertical-align: middle;
+      width: 1.875rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 12px;
+    }
+    [data-dpr='2'] .left-tab-tips{
+      font-size: 24px;
+    }
+    [data-dpr='3'] .left-tab-tips{
+      font-size: 36px;
+    }
+    .left-tab-tips div{
+      font-size: 10px;
+      width: 1.8125rem;
+      height: 0.625rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 0.625rem;
+      color: #717171;
+    }
+    [data-dpr='2'] .left-tab-tips div{
+      font-size: 20px;
+    }
+    [data-dpr='3'] .left-tab-tips div{
+      font-size: 30px;
+    }
+    .left-tab.active .left-tab-tips div{
+      color: #fff;
+    }
+    .no-address-img{
+      width: 6.25rem;
+      margin: 0.625rem auto 0px auto;
+      display: block;
+    }
+    .no-address-tips{
+      width: 10.0rem;
+      display: block;
+      margin-top: 0.625rem;
+      text-align: center;
+    }
+    .no-address-btn{
+      margin: 0.9375rem auto 0px auto;
+      width: 7.5rem;
+      border-radius: 0.125rem;
+      height: 1.09375rem;
+      line-height: 1.09375rem;
+      color: #fff;
+      background-color: #ff5a1e;
+      text-align: center;
+    }
+    .footer-freebuy-area-title{
+      background-color: #f1f1f1;
+      color: #666;
+      padding: 0.3125rem 0.21875rem 0.15625rem 0.53125rem;
+      margin: 0px -0.46875rem;
+    }
+    .reddot{
+      width: 0.25rem;
+      height: 0.25rem;
+      position: absolute;
+      border-radius: 0.5rem;
+      background-color: #ff0000;
+      top: 0.1rem;
+      right: 0.5rem;
+    }
+    .group-bonus-box-close{
+      position: absolute;
+      right: -0.40625rem;
+      top: -0.40625rem;
+    }
+    .group-bonus-box-close img{
+      width: 0.9375rem;
+      height: 0.9375rem;
+    }
+    .group-bonus-box{
+      position: fixed;
+      top: 3.125rem;
+      left: 0.9375rem;
+      width: 8.125rem;
+      height: 9.375rem;
+      background-color: #fff;
+      z-index: 100;
+      -webkit-transform: scale(0.1);
+      -webkit-transition: all 0.3s ease-in-out;
+      border-radius: 0.125rem;
+    }
+    .group-bonus-box.show{
+      -webkit-transform: scale(1);
+    }
+    .group-bonus-box-title{
+      font-size: 16px;
+      line-height: 1.09375rem;
+      height: 1.09375rem;
+      border-bottom: 3px solid #d1d1d1;
+      text-align: center;
+      color: #333;
+    }
+    [data-dpr='2'] .group-bonus-box-title{
+      font-size: 32px;
+    }
+    [data-dpr='3'] .group-bonus-box-title{
+      font-size: 48px;
+    }
+    .group-bonus-box-center{
+      height: 8.125rem;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    .bonus-item{
+      position: relative;
+      padding: 0.15625rem;
+      border-bottom: 1px solid #f1f1f1;
+      box-sizing: border-box;
+      height: 1.875rem;
+    }
+    .bouns-img{
+      display: block;
+      float: left;
+      width: 1.5625rem;
+      height: 1.5625rem;
+    }
+    .bonus-name{
+      position: absolute;
+      top: 0.15625rem;
+      left: 1.875rem;
+      font-size: 14px;
+      color: #333;
+      text-align: left;
+      width: 4.21875rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    [data-dpr='2'] .bonus-name{
+      font-size: 28px;
+    }
+    [data-dpr='3'] .bonus-name{
+      font-size: 42px;
+    }
+    .bonus-date{
+      font-size: 10px;
+      color: #ccc;
+      position: absolute;
+      bottom: 0.15625rem;
+      left: 1.875rem;
+      width: 4.21875rem;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    [data-dpr='2'] .bonus-date{
+      font-size: 20px;
+    }
+    [data-dpr='3'] .bonus-date{
+      font-size: 30px;
+    }
+    .bonus-btn{
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 1.875rem;
+      height: 1.84375rem;
+      color: #fff;
+      background-color: #ff0000;
+      line-height: 0.625rem;
+      padding: 0.3125rem 0px;
+      text-align: center;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+    [data-dpr='2'] .bonus-btn{
+      font-size: 24px;
+    }
+    [data-dpr='3'] .bonus-btn{
+      font-size: 36px;
+    }
+    .wave{
+      /*width: 1.3rem;
+      height: 1.3rem;*/
+      width: 3.3rem;
+      height: 2.6875rem;
+      position: absolute;
+      z-index: 90;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+    .wave img{
+      height: 100%;
+      margin-left: -0.125rem;
+    }
+    .bomba{
+      opacity: 0;
+      visibility: hidden;
+      -webkit-animation: bomba 1 1s ease-out;
+      animation: bomba 1 1s ease-out;
+    }
+    @-webkit-keyframes bomba {
+      0% {
+        -webkit-transform-origin: -50% 0%;
+        -webkit-transform: rotateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      20%{
+        -webkit-transform: rotateX(0deg);
+        -webkit-transform-origin: -10% 0%;
+      }
+      100% {
+        -webkit-transform: rotateX(0deg);
+        -webkit-transform-origin: -10% 0%;
+      }
+    }
+    .cart em.active{
+      animation: scale 0.4s;
+      -webkit-animation: scale 0.4s;
+    }
+    @-webkit-keyframes scale /* Safari 和 Chrome */
+    {
+      0%{
+        transform:scale(1,1);
+        -webkit-transform:scale(1,1);
+      }
+      50%{
+        transform:scale(1.4,1.4);
+        -webkit-transform:scale(1.4,1.4);
+      }
+      100%{
+        transform:scale(1,1);
+        -webkit-transform:scale(1,1);
+      }
+    }
+  </style>
+</head>
+<body>
+<script src="http://wechat-static.1mxian.com/js/framework/min/jweixin-1.0.0.js"></script>        <div id="wrapper">
+  <div class="activity-page" style="visibility: hidden">
+    <div class="bg">
+      <div class="group-bonus-box hide">
+        <div class="group-bonus-box-close">
+          <img src="http://wechat-static.1mxian.com/images/icon/close.png"/>
+        </div>
+        <div class="group-bonus-box-title">
+          您拥有的团购券
+        </div>
+        <div class="group-bonus-box-center"></div>
+      </div>
+    </div>
+    <header class="header">
+      <div class="location-area">
+        配送至:
+        <span></span>
+        <img class="pen_icon_img" src="http://wechat-static.1mxian.com/images/icon/arrow_icon_orange.png"/>
+      </div>
+    </header>
+    <div class="mall-center hide">
+      <div class="center clearfloat">
+        <div class="adv-bar">
+          <span>点击下载一米鲜App,享更多优惠</span>
+          <img class="close-icon" src="http://wechat-static.1mxian.com/images/icon/close_icon.png" />
+        </div>
+        <div class="left-bar"></div>
+        <div class="right-bar">
+          <div class="banner-area"></div>
+          <div class="fruit-center-area"></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <ul>
+        <li class="category  active ">
+          <i></i>
+          <p>商城</p>
+        </li>
+        <li class="activities ">
+          <i></i>
+          <p>促销</p>
+        </li>
+        <li class="group ">
+          <span class="group_cicle"><i class="group_cicle_icons"></i></span>
+        </li>
+        <li class="cart ">
+          <em></em>
+          <i></i>
+          <p>购物车</p>
+        </li>
+        <li class="mine ">
+          <i></i>
+          <p>我的</p>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</div>
+<script type="text/javascript" src="http://wechat-static.1mxian.com/js/framework/min/fastclick.min.js?0415"></script>
+<script type="text/javascript" src="http://wechat-static.1mxian.com/js/framework/min/jquery-2.2.2.min.js?0415"></script>
+<script type="text/javascript" src="http://wechat-static.1mxian.com/js/framework/min/xian_v2.min.js?0608"></script>
+<script>
+  $('.category').on('click',function(){
+    window.location.href = '/';
+  });
+  $('.group').on('click',function(){
+    window.location.href = '/buyingGroups';
+  });
+  $('.mine').on('click',function(){
+    window.location.href = '/mine';
+  });
+  $('.activities').on('click',function(){
+    window.location.href = '/activities/index';
+  });
+  $('.cart').on('click',function(){
+    window.location.href = '/cart';
+  });
+  $.ajax({
+    type: 'get',
+    url: '/shoppingCart/totalSkuCount',
+    success: function(data) {
+      $('.cart em').html(data.count);
+      $('.cart em').fadeIn();
+    }
+  });
+</script>
+<script type="text/javascript" src="http://wechat-static.1mxian.com/js/widget/min/swipe.min.js?0405"></script>
+<script type="text/javascript" src="http://wechat-static.1mxian.com/js/widget/min/imglazyload.min.js?0420"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    xian.loading({
+      show : true
+    });
+    new xian.landingPage({
+      src : 'http://wechat-static.1mxian.com/images/landing-page/daojishi_0323.jpg',
+      startTime : '2016/03/23 00:00:00',
+      endTime : '2016/03/25 23:59:59',
+      showTime : '3000',
+      success : function(){
+        $('.activity-page').css('visibility','visible');
+      }
+    });
+    $.ajax({
+      type: 'get',
+      url: 'http://x.1mxian.com/wechat/school/js/signpackage?from=life&url='+window.location.href,
+      success: function(data) {
+        data = $.parseJSON(data);
+        wx.config({
+          debug: false,
+          appId: data.data.signPackage.appid,
+          timestamp: data.data.signPackage.timestamp,
+          nonceStr: data.data.signPackage.noncestr,
+          signature: data.data.signPackage.signature,
+          jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','getLocation']
+        });
+        wx.ready(function(){
+          wx.onMenuShareTimeline({
+            title: '更多缤纷果品，尽在一米鲜',
+            link: 'http://x.1mxian.com',
+            imgUrl: 'http://'+window.location.hostname+'/images/icon/logo.jpg'
+          });
+          wx.onMenuShareAppMessage({
+            title: '更多缤纷果品，尽在一米鲜',
+            desc: '吃水果，一米鲜',
+            link: 'http://x.1mxian.com',
+            imgUrl: 'http://'+window.location.hostname+'/images/icon/logo.jpg'
+          });
+        });
+      }
+    });
+    var submitFlag = true;
+    var rem = lib.flexible.rem;
+    var store_id = '227';
+    var activities = [];            //记录当前所有活动
+    var price = 0;                  //记录购物车中商品总价
+    var buildGoodItem = function(id,name,price,num,shouldBuyCount,type){
+      this.id = id;
+      this.name = name;
+      this.price = price;
+      this.num = num;
+      this.shouldBuyCount = shouldBuyCount;
+    }
+    var shoppingCart = [];
+    var region = '';
+    var buying_group_bonuses = '';
+    var buying_group_goods = ''
+    //绑定按钮事件
+    var bindBtnFunction = function(){
+      $('.adv-bar').on('click',function(){
+        _hmt.push(['_trackEvent', 'home_adv_download', 'home_adv_download']);
+        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.yimixian.app';
+      });
+      $('.close-icon').on('click',function(){
+        xian.setCookie('1mxian_adv','hide',2,'/');
+        $('.adv-bar').hide();
+        $('.right-bar').addClass('hideadv');
+        return false;
+      });
+      $('.group-bonus-box-close').on('click',function(){
+        $('.group-bonus-box').removeClass('show');
+        $('.bg').removeClass('show');
+        setTimeout(function(){
+          $('.group-bonus-box').hide();
+          $('.bg').hide();
+        },300);
+      });
+      $('.mine').on('click',function(){
+        var bonus_id = 268284747;
+        xian.setCookie('bonus_id',bonus_id,30,'/');
+        window.location.href = '/mine';
+        return false;
+      });
+      $('.location-area').on('click',function(){
+        $(this).addClass('active');
+        window.location.href = '/customer/current/addresses/show?url_from=stores';
+      });
+      $('.left-tab').on('click',function(){
+        if($(this).hasClass('active')){
+          return false;
+        }
+        var activity_id = $(this).attr('activity-id');
+        $('.left-tab').removeClass('active');
+        $(this).addClass('active');
+        new drawRightBar(activity_id);
+      });
+    };
+    //绑定商品列表中的按钮事件（+，-按钮）
+    var bindGoodBtn = function(){
+      $('.good').bind('click',function(event){
+        if($(this).attr('freebuy')){
+          return false;
+        }else{
+          window.location.href = $(this).attr('href');
+        }
+      });
+      $('.good-cart-btn').on('click',function(){
+        return false;
+      })
+      $('.good-yushou-cart').on('click',function(){
+        return false;
+      });
+      $('.good-cart-reduce').on('click',function(){
+        new goodCartBtnListener(this,'reduce');
+        return false;
+      });
+      $('.good-cart-add').on('click',function(){
+        if($(this).parent().parent().attr('freebuy') == 'true'){
+          new xian.alertBox({
+            boxContent : '特惠换购为APP专享活动<br>更多优惠活动尽在一米鲜App',
+            btnNum : 2,
+            enterBtnContent : '去下载',
+            cancelBtnContent : '再逛逛',
+            success : function(){
+              window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.yimixian.app';
+            }
+          });
+        }else{
+          new goodCartBtnListener(this,'add');
+        }
+        return false;
+      });
+    };
+    //加减商品数量
+    var goodCartBtnListener = function(btn,type){
+      if( !submitFlag ){
+        return false;
+      }
+      submitFlag = false;
+      var cartBtn = $(btn);
+      var good_id = cartBtn.parent().parent().attr('good-id');
+      var $goodBtn = cartBtn.parent().parent();
+      cartBtn.find('i').addClass('active');
+      setTimeout(function(){
+        cartBtn.find('i').removeClass('active');
+      },300);
+      if(type == 'add'){
+        $.ajax({
+          type: 'post',
+          url: '/shoppingCart/add',
+          data: {
+            good_id : good_id,
+            shopping_cart: 0
+          },
+          success: function(data) {
+            submitFlag = true;
+            if(data.shouldLogin == true){
+              window.location.href = '/customer/login/show?url_from='+window.location.href;
+              return false;
+            }else{
+              if(data.res == false){
+                new xian.alertBox({
+                  boxContent : data.msg
+                });
+                cartBtn.addClass('disabled');
+              }else{
+                var offset = $(".cart em").offset();
+                $('#wrapper').append('<div class="wave"><img src="'+cartBtn.attr('src')+'"></div>');
+                var flyer = $('.wave');
+                setTimeout(function(){
+                  flyer.css({left:cartBtn.parent().parent().offset().left,top:cartBtn.parent().parent().offset().top}).animate({borderRadius:'50%',width:'1rem',height:'1rem',left:cartBtn.parent().parent().offset().left + (offset.left - cartBtn.parent().parent().offset().left)/2,top:cartBtn.parent().parent().offset().top + (offset.top - cartBtn.parent().parent().offset().top)/2},200);
+                },200);
+                setTimeout(function(){
+                  flyer.stop().animate({borderRadius:'50%',width:'0',height:'0',left:offset.left,top:offset.top},500);
+                },300);
+                setTimeout(function(){
+                  flyer.remove();
+                  $('.cart em').html(data.shoppingCartTotalCount).addClass('active');
+                  setTimeout(function(){
+                    $('.cart em').removeClass('active');
+                  },1000);
+                },500);
+                cartBtn.parent().find('.good-cart-reduce').fadeIn(200);
+                cartBtn.parent().parent().find('.old-price').fadeOut(200);
+                cartBtn.parent().find('span').show().html(data.shoppingCartCount);
+                if (data.shoppingCartCount >= $goodBtn.attr('should-buy-count')) {
+                  cartBtn.find('i').addClass('disabled');
+                }
+                //更新购物车数据源
+                if(shoppingCart[good_id]){
+                  shoppingCart[good_id]++;
+                }else{
+                  shoppingCart[good_id] = 1;
+                }
+              }
+            }
+          }
+        });
+      }else{
+        $.ajax({
+          type: 'post',
+          url: '/shoppingCart/remove',
+          data: {
+            good_id : good_id,
+            shopping_cart: 0
+          },
+          success: function(data) {
+            submitFlag = true;
+            if(data.shouldLogin == true){
+              window.location.href = 'http://x.rd.1mxian.com/customer/login/show?url_from='+window.location.href;
+              return false;
+            }
+            if(data.res == false){
+              new xian.alertBox({
+                boxContent : data.msg
+              });
+            }else{
+              if(data.shoppingCartCount == 0){
+                cartBtn.parent().find('.good-cart-reduce').fadeOut(200);
+                cartBtn.parent().parent().find('.old-price').fadeIn(200);
+                cartBtn.parent().parent().find('.old-price').fadeIn(200);
+                cartBtn.parent().find('span').fadeOut().html(data.shoppingCartCount);
+                cartBtn.parent().find('.good-cart-add').find('i').removeClass('disabled');
+              }else{
+                cartBtn.parent().find('span').html(data.shoppingCartCount);
+                cartBtn.parent().find('.good-cart-add').find('i').removeClass('disabled');
+              }
+              //更新购物车数据源
+              if(shoppingCart[good_id]){
+                shoppingCart[good_id]--;
+              }
+              $('.cart em').html(data.shoppingCartTotalCount);
+            }
+          }
+        });
+      }
+    }
+    //渲染左侧tab
+    var drawLeftBar = function(){
+      $('.left-bar').html('');
+      for ( i = 0;i < activities.length;i++ ){
+        if(activities[i].goods != ''){
+          var html =
+                  '<div class="left-tab" activity-id="'+activities[i].id+'">'+
+                  '<div class="vertical-box"></div>'+
+                  '<div class="left-tab-tips">'+activities[i].name+'<div>'+activities[i].sub_title+'</div></div>'+
+                  '</div>';
+          $html = $(html);
+          if(activities[i].sub_title == ''){
+            $html.find('.left-tab-tips div').remove();
+          }
+          $('.left-bar').append($html);
+        }
+      }
+      $('.left-tab').eq(0).addClass('active');
+    };
+    //渲染右侧商品列表
+    var drawRightBar = function(activity_id){
+      $('.banner-area').html('');
+      $('.fruit-center-area').html('');
+      for( i = 0;i < activities.length;i++ ){
+        if(activities[i].id == activity_id){
+          if( activities[i].banners == '' ){
+            activities[i].banners = [{
+              'intro_url' : '/customer/current/invitation',
+              'img' : 'carousel_v2/20yuanmiandan_0517.jpg'
+            }];
+          }
+          var banner_html =
+                  '<img class="header-banner banner-img" url="'+activities[i].banners[0].intro_url+'" src="http://7sbnc0.com2.z0.glb.qiniucdn.com/material/'+activities[i].banners[0].img+'?imageView2/2/w/480">';
+          /*var banner_html = '<img class="header-banner banner-img" url="http://a.app.qq.com/o/simple.jsp?pkgname=com.yimixian.app" src="http://7sbnc0.com2.z0.glb.qiniucdn.com/material/carousel_v2/lb_wx_zlmht0510.jpg?imageView2/2/w/480">';*/
+          var $banner_html = $(banner_html);
+          $banner_html.on('click',function(event){
+            var url = $(this).attr('url');
+            if( url != '' && typeof(url) != 'undefined' ){
+              window.location.href = url;
+            }
+          });
+          $('.banner-area').html($banner_html);
+          $('.banner-area').show();
+          for( k = 0;k < activities[i].goods.length;k++){
+            var goods_html =
+                    '<div id="good-'+activities[i].goods[k].id+'" class="good clearfloat" good-id="'+activities[i].goods[k].id+'" href="'+activities[i].goods[k].desc_url+'" should-buy-count="'+activities[i].goods[k].should_buy_count+'" price="'+activities[i].goods[k].unit_price+'">'+
+                    '<img class="good-promotion-img" src="'+activities[i].goods[k].promotion_img+'"/>'+
+                    '<img class="good-img" src="http://wechat-static.1mxian.com/images/placeholder_img.jpg" data-url="'+activities[i].goods[k].img+'"/>'+
+                    '<div class="good-info-area">'+
+                    '<div class="good-title">'+activities[i].goods[k].name+'</div>'+
+                    '<div class="good-specification">'+activities[i].goods[k].unit_desc+'</div>'+
+                    '<div class="good-left">'+activities[i].goods[k].sale_status+'</div>'+
+                    '<div class="good-price-area">'+
+                    '<div class="good-price">'+
+                    '<span>￥'+activities[i].goods[k].unit_price+'</span>'+
+                    '</div>'+
+                    '<div class="old-price">'+
+                    '<p>￥'+activities[i].goods[k].unit_old_price+'</p>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="good-yushou-cart">'+
+                    '<img class="good-yushou-cart-icon" src="http://wechat-static.1mxian.com/images/icon/clock.png"/>'+
+                    '</div>'+
+                    '<div class="good-cart-btn">'+
+                    '<div class="good-cart good-cart-reduce reduce"><i><img class="numchange" src="http://wechat-static.1mxian.com/images/icon/reduce.png?1"/></i></div>'+
+                    '<span>0</span>'+
+                    '<div class="good-cart good-cart-add add" src="'+activities[i].goods[k].img+'"><i><img class="numchange" src="http://wechat-static.1mxian.com/images/icon/add.png?1"/></i></div>'+
+                    '</div>'+
+                    '</div>';
+            var $goods_html = $(goods_html);
+            if(activities[i].goods[k].unit_old_price == '0.00'){
+              $goods_html.find('.old-price').remove();
+            }
+            if(activities[i].goods[k].promotion_img == ''){
+              $goods_html.find('.good-promotion-img').hide();
+            }
+            if (activities[i].goods[k].should_buy_count == 0) {
+              $goods_html.find('.good-cart-btn').remove();
+              $goods_html.find('.group-buy-btn').remove();
+            }else{
+              $goods_html.find('.good-yushou-cart').remove();
+            }
+            var num = shoppingCart[activities[i].goods[k].id] || 0;
+            if(activities[i].goods[k].type_gift){
+              $goods_html.attr('freebuy','true');
+            }
+            if(num == 0){
+              $goods_html.find('.good-cart-reduce').hide();
+              $goods_html.find('.good-cart-btn span').hide();
+            }else{
+              $goods_html.find('.good-cart-btn span').html(num);
+              $goods_html.find('.old-price').hide();
+              if(num >= activities[i].goods[k].should_buy_count){
+                $goods_html.find('.good-cart-btn .good-cart-add').find('i').addClass('disabled');
+              }
+            }
+            $('.fruit-center-area').append($goods_html);
+          }
+        }else{
+          continue;
+        }
+        $('img.good-img').lazyload({
+          threshold : 400,
+          effect : 'fadeIn',
+          innerScroll : true,
+          data_attribute : 'url',
+          container : $('.right-bar')
+        });
+        new bindGoodBtn();
+      }
+    };
+    //初始化页面
+    var initPage = function(){
+      if(xian.getCookie('1mxian_adv') == 'hide'){
+        var windowHeight = $(window).height() - 1.25 * rem;
+        $('.adv-bar').hide();
+        $('.mall-center .right-bar').addClass('hideadv');
+        $('.mall-center .center').css('height',windowHeight);
+        $('.mall-center .left-bar').css('height',windowHeight);
+        $('.mall-center .right-bar').css('height',windowHeight);
+      }else{
+        var windowHeight = $(window).height() - 2.1875 * rem;
+        $('.adv-bar').show();
+        $('.mall-center .center').css('height',windowHeight + 0.9375 * rem);
+        $('.mall-center .left-bar').css('height',windowHeight + 0.9375 * rem);
+        $('.mall-center .right-bar').css('height',windowHeight);
+      }
+      xian.loading({
+        show : false
+      });
+      var bonus_id = 268284747;
+      var old_bonus_id = xian.getCookie('bonus_id');
+      if(old_bonus_id == null){
+        old_bonus_id = 0;
+      }
+      if( bonus_id > old_bonus_id){
+        var html = '<div class="reddot"></div>';
+        $('footer .mine').append(html);
+      }
+      $('.mall-center').fadeIn();
+      if(activities != ''){
+        new drawRightBar(activities[0].id);
+        if( buying_group_bonuses.length > 0){
+          var group_bonuses = xian.getCookie('group_bonuses');
+          if ( group_bonuses != buying_group_bonuses){
+            $('.bg').show();
+            $('.group-bonus-box').show();
+            setTimeout(function(){
+              $('.bg').addClass('show');
+              $('.group-bonus-box').addClass('show');
+            },1);
+            $('.group-bonus-box-title').html('您有'+buying_group_bonuses.length+'张团购券待使用');
+            for( i = 0; i < buying_group_bonuses.length; i++ ){
+              for (j = 0; j < buying_group_goods.length; j++){
+                if( buying_group_goods[j].id == buying_group_bonuses[i].good_id){
+                  var img = buying_group_goods[j].hot_img.split('?')[0];
+                  var price = parseFloat(buying_group_goods[j].buying_group_price).toFixed(2) - parseFloat(buying_group_bonuses[i].value).toFixed(2);
+                  price = price.toFixed(2);
+                  if( price < 0){
+                    price = '0.00';
+                  }
+                  var html =
+                          '<div class="bonus-item" group-id="'+buying_group_bonuses[i].good_id+'" href="'+buying_group_goods[j].desc_url+'">'+
+                          '<img class="bouns-img" src="'+img+'?imageView2/5/w/150"/>'+
+                          '<div class="bonus-name">'+buying_group_bonuses[i].title+'</div>'+
+                          '<div class="bonus-date">'+buying_group_bonuses[i].end_at+'过期</div>'+
+                          '<div class="bonus-btn">'+price+'元<br>开团</div>'+
+                          '</div>';
+                  $html = $(html);
+                  $('.group-bonus-box-center').append($html);
+                }
+              }
+            }
+            $('.bonus-btn').on('click',function(){
+              var href = $(this).parent().attr('href');
+              window.location.href = href;
+            });
+            xian.setCookie('group_bonuses',buying_group_bonuses,2,'/');
+          }
+        }
+      }
+      new bindBtnFunction();
+      if( typeof(region) != '' ){
+        _hmt.push(['_trackEvent', 'home', 'home', region]);
+      }
+    };
+    //获得店铺信息及商品
+    var getStoreInfo = function(longitude,latitude){
+      if(store_id == '0'){
+        $.ajax({
+          type: 'get',
+          url: '/stores/location/get_store_id_by_location',
+          data: {
+            longitude : longitude,
+            latitude: latitude
+          },
+          async: false,
+          success: function(data) {
+            if(data.error){
+              new xian.alertBox({
+                boxContent : data.error.message
+              });
+              var html =
+                      '<img src="http://wechat-static.1mxian.com/images/icon/no_address.png" class="no-address-img"/>'+
+                      '<div class="no-address-tips">对不起，您所在的区域不在配送范围<br>请在左上角选择其他配送地址</div>'+
+                      '<a href="http://wechat-static.1mxian.com/service_instruction_new/index.html"><div class="no-address-btn">查看服务范围</div></a>'
+              $('.fruit-center-area').html(html);
+              $('.right-bar').css('width',10 * rem);
+              $('.banner-area').remove();
+              $('.adv-bar').remove();
+              new initPage();
+            }else{
+              store_id = data.store_id;
+              xian.setCookie('store_id',store_id,30,'/');
+              xian.setCookie('address_id','',-1,'/');
+            }
+          }
+        });
+      }
+      if(store_id == '0'){
+        return false;
+      }else{
+        $.ajax({
+          type: 'get',
+          url: '/stores/'+store_id+'/category',
+          success: function(data) {
+            try{
+              region = data.store.regional_name;
+              buying_group_bonuses = data.store.buying_group.bonuses;
+              buying_group_goods = data.store.buying_group.goods;
+            }catch(e){
+            }
+            var sections = data.store.sections;
+            if(sections != ''){
+              for( i = 0; i < sections.length; i++){
+                var activity = {
+                  id : sections[i].id,
+                  name : sections[i].name,
+                  sub_title : sections[i].sub_title,
+                  banners : sections[i].banners,
+                  goods : sections[i].goods
+                };
+                activities.push(activity);
+              }
+              new drawLeftBar();
+              new initPage();
+            }else{
+              window.location.href = '/buyingGroups'
+            }
+          }
+        });
+      }
+    }
+    //获得用户地理位置
+    var getLocation = function(longitude,latitude){
+      $.ajax({
+        type: 'get',
+        url: 'http://api.map.baidu.com/geoconv/v1/?coords='+longitude+','+latitude+'&from=1&to=5&ak=PA21rbqaYLtXp9gnEML5DGtN',
+        dataType: 'jsonp',
+        success: function(data) {
+          try{
+            longitude = data.result[0].x;
+            latitude = data.result[0].y;
+          }catch(e){
+            new xian.alertBox({
+              boxContent : '获取地址失败，请输入您的地址',
+              success : function(){
+                window.location.href = '/customer/current/addresses/show?url_from=stores';
+              }
+            });
+            return false;
+          }
+          $.ajax({
+            type: 'get',
+            url: 'http://api.map.baidu.com/geocoder/v2/?ak=PA21rbqaYLtXp9gnEML5DGtN&callback=renderReverse&location='+latitude+','+longitude+'&output=json&pois=1',
+            dataType: 'jsonp',
+            success: function(data) {
+              try{
+                $('.location-area span').html(data.result.pois[0].name);
+                latitude = data.result.pois[0].point.y;
+                longitude = data.result.pois[0].point.x;
+              }catch(e){
+                $('.location-area span').html(data.result.formatted_address);
+                latitude = data.result.location.lat;
+                longitude = data.result.location.lng;
+              }
+              new getStoreInfo(longitude,latitude);
+            },
+            error: function(){
+              $.ajax({
+                type: 'get',
+                url: 'http://api.map.baidu.com/geocoder/v2/?ak=C0035076a93bc1eb1a9d1554d0ce2f63&callback=renderReverse&location='+latitude+','+longitude+'&output=json&pois=1',
+                dataType: 'jsonp',
+                success: function(data) {
+                  try {
+                    $('.location-area span').html(data.result.pois[0].name);
+                    latitude = data.result.pois[0].point.y;
+                    longitude = data.result.pois[0].point.x;
+                  } catch(e) {
+                    $('.location-area span').html(data.result.formatted_address);
+                    latitude = data.result.location.lat;
+                    longitude = data.result.location.lng;
+                  }
+                  new getStoreInfo(longitude,latitude);
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+    //判断用户是否选择了地址或者自提点，如果没有进行定位
+    if($('.location-area span').html() == ''){
+      wx.ready(function(){
+        var second = 1;
+        var clock = setInterval(function(){
+          if(second > 10){
+            new xian.alertBox({
+              boxContent : '无法定位您的位置，请手动选择您的收货地址',
+              success : function(){
+                window.location.href = '/customer/current/addresses/show?url_from=stores';
+              }
+            });
+            clearInterval(clock);
+          }else{
+            second = second + 1;
+          }
+        }, 1000);
+        wx.getLocation({
+          success: function (res) {
+            clearInterval(clock);
+            var latitude = res.latitude;
+            var longitude = res.longitude;
+            new getLocation(longitude,latitude);
+          },
+          fail : function(res){
+            new xian.alertBox({
+              boxContent : '无法定位您的位置，请手动选择您的收货地址',
+              success : function(){
+                window.location.href = '/customer/current/addresses/show?url_from=stores';
+              }
+            });
+          }
+        });
+      });
+    }else{
+      new getStoreInfo();
+    }
+  });
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?40f2e3b2ca386af0d2fdf22bddfbbbd5";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+</body>
+</html>

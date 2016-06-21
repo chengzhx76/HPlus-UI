@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>淘弃宝</title>
+  <link rel='stylesheet' href='css/reset.css' />
+  <link rel='stylesheet' href='css/common.css' />
+  <link rel="stylesheet" href="css/recycle.css" />
+  <link rel="stylesheet" href="css/swiper.min.css" />
+</head>
+<body>
+<form id="immediately_recovery_form" class="my_tqb">
+  <!--banner轮播图-->
+  <!--<div class="yiz-slider-1" id="slider">
+       <div class="yiz-page-btn">
+           <span class="">1</span>
+           <span>2</span>
+           <span>3</span>
+           <span>4</span>
+       </div>
+       <ul id="slider_list">
+      <li><img src="./images/banner/1.jpg" alt="" /></li>
+      <li><img src="./images/banner/2.jpg" alt="" /></li>
+      <li><img src="./images/banner/3.jpg" alt="" /></li>
+      <li><img src="./images/banner/4.jpg" alt="" /></li>
+    </ul>
+  </div>-->
+  <div class="swiper-container swiper-container-horizontal">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="./images/banner/1.jpg" alt="" /></div>
+      <div class="swiper-slide"><img src="./images/banner/2.jpg" alt="" /></div>
+      <div class="swiper-slide"><img src="./images/banner/3.jpg" alt="" /></div>
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+      <span class="swiper-pagination-bullet"></span>
+      <span class="swiper-pagination-bullet"></span>
+      <span class="swiper-pagination-bullet"></span>
+      <span class="swiper-pagination-bullet"></span>
+
+    </div>
+  </div>
+  <!--banner轮播图 end-->
+  <div class="remind_item mg_t10">
+    <img id="noticeTitle" class="noticeTitle" src="images/remind_red.png" alt="" />
+    <p id="noticeContent" class="noticeContent" name="noticeContent"></p>
+  </div>
+  <!--废品分类-->
+  <div class="classification_nav">
+    <div class="cans modular">
+      <a href="recycle_price.html?wastetype=1111">
+        <p class="icon"></p>
+        <p class="title">易拉罐</p>
+      </a>
+    </div>
+
+    <div class="plastic modular">
+      <a href="recycle_price.html?wastetype=2222">
+        <p class="icon"></p>
+        <p class="title">塑料瓶</p>
+      </a>
+    </div>
+
+    <div class="paper modular">
+      <a class="modular_right_none" href="recycle_price.html?wastetype=3333">
+        <p class="icon"></p>
+        <p class="title">纸类</p>
+      </a>
+    </div>
+
+  </div>
+  <div class="classification_nav">
+    <div class="clothes modular">
+      <a href="recycle_price.html?wastetype=4444">
+        <p class="icon"></p>
+        <p class="title">旧衣服</p>
+      </a>
+    </div>
+    <div class="electric modular">
+      <a href="recycle_price.html?wastetype=5555">
+        <p class="icon"></p>
+        <p class="title">家用电器</p>
+      </a>
+    </div>
+
+    <div class="please modular">
+      <a class="modular_right_none" href="recycle_price.html?wastetype=6666">
+        <p class="icon hottest"></p>
+        <p class="title">智能手机</p>
+      </a>
+    </div>
+
+  </div>
+  <!--废品分类 end-->
+  <div class="mg_lr15"><a id="create_order_btn" onclick="recycleCreateOrder();return false;" class="recovery_btn btn" href="###">立即回收</a></div>
+</form>
+
+<footer class="navbar">
+  <div class="flex active">
+    <a href="index.html">
+      <p class="recycling icon"></p>
+      <p class="subtitle">上门回收</p>
+    </a>
+  </div>
+  <div class="flex">
+    <a href="shop_index.html" onclick="return validateLogin();">
+      <p class="shoping icon" onclick="return validateLogin();"></p>
+      <p class="subtitle" onclick="return validateLogin();">网上商城</p>
+    </a>
+  </div>
+  <div class="flex">
+    <a href="my_tqb.html" onclick="return validateLogin();">
+      <p class="personal icon" onclick="return validateLogin();"></p>
+      <p class="subtitle" onclick="return validateLogin();">个人中心</p>
+    </a>
+  </div>
+</footer>
+
+<script src="js/import_commonjs.js"></script>
+<script src="js/app/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+  //banner滑动轮播图效果
+  var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: 2500,
+    autoplayDisableOnInteraction: false
+  });
+
+  //获取微信code 如果是从授权成功跳转过来的 需要获取微信用户信息
+  var wxCode = getUrlParam("code");
+
+  if(!isEmptyString(wxCode)) {
+
+    requestWXUserInfoWithCode(wxCode);
+
+  }
+  //微信授权结束==================================
+
+  sendInitRequest();
+
+  var isSetAddress = "1";
+  var orderFlag = "0"; // 0 无订单 1有订单
+  //获取初始化信息
+  function sendInitRequest()
+  {
+    //获取初始化信息 拉去用户的回收信息
+    getInitInfo(function(initInfo)
+    {
+      if(initInfo)
+      {
+        isSetAddress = initInfo.isAddress;
+        orderFlag = initInfo.orderFlag;
+        $("#noticeContent").html(initInfo.noticeContent);
+
+        var listUrl = initInfo.listUrl;
+        /*$("#slider").append('<ul id="slider_list"></ul>');
+         $.each(listUrl,function(index,picUrl)
+         {
+         $("#slider_list").append('<li>'+'<img src="'+picUrl.url+'" alt="" />'+'</li>');
+         });*/
+
+
+        //轮播图代码
+        /*						$.ScrollPic({
+         ele:'.yiz-slider-1',   //插件应用div
+         Time:'3000',          //自动切换时间
+         autoscrooll:true,       //设置是否自动渐变
+         });*/
+
+      }
+    });
+  }
+  //创建订单
+  function recycleCreateOrder()
+  {
+    if(isLogin())
+    {
+      //isSetAddress=="1";是否已经设置地址：0 未设置  1已设置；
+      if(isSetAddress=="0")
+      {
+        locationRelace("historical_address_new.html?redir=index");
+        return;
+      }
+      else if(isSetAddress=="1")
+      {
+        if(orderFlag =="1"){
+          showToast("当前已有执行中的订单,请等待服务~");
+          //		$("#create_order_btn").text("等待服务");
+          return false;
+        }
+        locationRelace("recycle_create_order.html");
+      }
+    }
+    else
+    {
+      //$("#create_order_btn").attr("href","login.html");
+      locationRelace("login.html");
+    }
+  }
+
+</script>
+</body>
+</html>

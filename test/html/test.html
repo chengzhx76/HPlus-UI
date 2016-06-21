@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="style/weui.css"/>
+    <script src="js/zepto.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#main").load("load.html",function(response, status, xhr){
+//                alert(response+" "+status+" "+xhr);
+            });
+        });
+    </script>
+</head>
+
+<body ontouchstart>
+<div class="main">
+    <div id="main" class="main">
+
+    </div>
+</div>
+</body>
+
+</html>

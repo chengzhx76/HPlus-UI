@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/weui.css"/>
+  <link rel="stylesheet" href="css/weui2.css"/>
+  <script src="js/zepto.min.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/parabola.js"></script>
+
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body ontouchstart>
+  <header class="header">
+    <div class="slide" id="slideshow">
+      <ul>
+        <li>
+          <a href="#"><img src="images/swiper-1.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/swiper-2.jpg" alt=""></a>
+        </li>
+        <li>
+          <a href="#"><img src="images/swiper-3.jpg" alt=""></a>
+        </li>
+      </ul>
+      <div class="dot">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="notify">
+      <div class="icon icon-31"></div>
+      <div class="slide notify-text" id="notify-txt">
+        <ul>
+          <li>
+            <div class='txt'>微信端上线了，敬请使用 ~ ~</div>
+          </li>
+          <li>
+            <div class='txt'>兑换【饿了么】畅享美食红包 消耗20金币</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <article class="weui_article content">
+    <h1>商品列表</h1>
+    <!--<div id="boll" class="boll">-->
+      <!--<img src="test/1.jpg" style="height: 100px;width: 100px">-->
+    <!--</div>-->
+    <div class="bd">
+      <div class="row">
+        <div class="col-33">
+          <figure class="item">
+            <a class="pic" href="detail.html"><img src="images/zm.jpg" width="110" height="105"></a>
+            <figcaption>
+              <strong class="title">蒸馍</strong>
+              <!--<em class="desc">0.25g/个</em>-->
+              <div class="info">
+                <span class="price">
+                  ￥<strong>0.5</strong>
+                </span>
+                <span class="add icon icon-78"></span>
+              </div>
+              <div class="tag">推荐</div>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-33">
+          <figure class="item">
+            <a class="pic" href="detail.html"><img src="images/hj.jpg" width="110" height="105"></a>
+            <figcaption>
+              <strong class="title">花卷</strong>
+              <!--<em class="desc">0.25g/个</em>-->
+              <div class="info">
+                <span class="price">
+                  ￥<strong>0.5</strong>
+                </span>
+                <span class="add icon icon-78"></span>
+              </div>
+              <div class="tag">推荐</div>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-33">
+          <figure class="item">
+            <a class="pic" href="detail.html"><img src="images/tb.jpg" width="110" height="105"></a>
+            <figcaption>
+              <strong class="title">糖包</strong>
+              <!--<em class="desc">0.25g/个</em>-->
+              <div class="info">
+                <span class="price">
+                  ￥<strong>0.5</strong>
+                </span>
+                <span class="add icon icon-78"></span>
+              </div>
+              <div class="tag">推荐</div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="bd spacing">
+    <a href="mall.html" class="into weui_btn bg-orange">进入商城</a>
+  </div>
+
+  <footer class="weui_tab tab-bottom" style="height:55px;">
+    <nav class="weui_tabbar">
+      <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+        <div class="weui_tabbar_icon">
+          <img src="icon/icon_nav_button.png" alt="">
+        </div>
+        <p class="weui_tabbar_label">首页</p>
+      </a>
+      <a href="mall.html" class="weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+          <img src="icon/icon_nav_msg.png" alt="">
+        </div>
+        <p class="weui_tabbar_label">商城</p>
+      </a>
+      <a href="javascript:;" class="weui_tabbar_item">
+        <!--<div class="weui_tabbar_icon">-->
+        <!--<img src="icon/icon_nav_cell.png" alt="">-->
+        <!--</div>-->
+        <!--<p class="weui_tabbar_label">购物车</p>-->
+      </a>
+      <a href="javascript:;" class="alert weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+          <img src="icon/icon_nav_article.png" alt="">
+        </div>
+        <p class="weui_tabbar_label">订单</p>
+      </a>
+      <a href="myinfo.html" class="weui_tabbar_item weui_bar_item_on">
+        <div class="weui_tabbar_icon">
+          <img src="icon/icon_nav_cell.png" alt="">
+        </div>
+        <p class="weui_tabbar_label">我</p>
+      </a>
+    </nav>
+  </footer>
+  <a id="shopCart" href="javascript:;" class="alert cart">
+    <div class="c-icon">
+      <i class="icon icon-83"></i>
+    </div>
+    <!--<p class="c-txt">购物车</p>-->
+  </a>
+  <script>
+    $(function () {
+      $(".add").click(function () {
+//        var imgSrc = $(this).parents(".item").children('.pic').children('img').attr('src');
+//        alert(imgSrc);
+      });
+      $('#slideshow').swipeSlide({
+        autoSwipe: true,//自动切换默认是
+        speed: 3000,//速度默认4000
+        continuousScroll: true,//默认否
+        transitionType: 'cubic-bezier(0.22, 0.69, 0.72, 0.88)',//过渡动画linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier
+        lazyLoad: true,//懒加载默认否
+        firstCallback: function (i, sum, me) {
+          me.find('.dot').children().first().addClass('cur');
+        },
+        callback: function (i, sum, me) {
+          me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+        }
+      });
+      $('#notify-txt').swipeSlide({
+        autoSwipe: true,//自动切换默认是
+        speed: 5000,//速度默认4000
+        continuousScroll: true,//默认否
+        transitionType: 'ease-in'
+      });
+
+      $(".alert").click(function(){
+        alert("还没做！");
+      });
+
+      // 购买
+      $(".add").click(function (event) {
+        event.preventDefault();
+        var imgSrc = $(this).parents(".item").children('.pic').children('img').attr('src');
+        var imgObj = $('<img src="' + imgSrc + '">').appendTo("body").css({
+          "width": "30px",
+          "height": "30px",
+          "border-radius": "50px",
+          "position": "absolute",
+          "top": toInteger($(this).offset().top) + toInteger($(this).css("width"))/2-15,
+          "left": toInteger($(this).offset().left)+ toInteger($(this).css("height"))/2-15,
+        });
+        var bool = new Parabola({
+          el: imgObj,
+          callback: function () {
+
+          },
+          stepCallback: function (x, y) {
+            /*$("<div>").appendTo("body").css({
+             "position": "absolute",
+             "top": this.$elTop + y + 'px',
+             "left": this.$elLeft + x + 'px',
+             "background-color": "#CDCDCD",
+             "width": "5px",
+             "height": "5px",
+             "border-radius": "5px"
+             });*/
+          }
+        });
+        // 设置配置参数
+        bool.setOptions({
+          targetEl: $("#shopCart"),
+          curvature: 0.01,
+          duration: 600
+        });
+        // 开始运动
+        bool.start();
+      });
+
+      function toInteger(text){
+        text = parseInt(text);
+        return isFinite(text) ? text : 0;
+      }
+
+    });
+  </script>
+  <script src="js/example.js"></script>
+</body>
+</html>

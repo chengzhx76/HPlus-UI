@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name = "format-detection" content = "telephone=no">
+  <title>个人中心</title>
+  <link rel='stylesheet' href='css/reset.css' />
+  <link rel='stylesheet' href='css/common.css' />
+  <link rel='stylesheet' href='css/my_taoqbao.css' />
+</head>
+<body>
+<div class="my_tqb mg_t15">
+  <a href="my_tqb_data.html">
+    <div class="item_line">
+      <div class="head_item">
+        <div class="headPic">
+          <img width="48" height="48" src="images/default_head.png" />
+        </div>
+        <p class="nickname"></p>
+        <div class="headInfo">
+          <p id="phone" class="subtitle"></p>
+        </div>
+      </div>
+      <a href="###" onclick="toShare();return false;">
+        <div class="share_gift">
+          <p class="invi_code">邀请码：<span id="inviteCode" name="inviteCode"></span></p>
+          <p class="gift"></p>
+          <span class="arrow_right"></span>
+        </div>
+      </a>
+      <div class="cumulative_item">
+        <div class="cumulative_flex cumulative_flex01">
+          <p class="num" id="date"></p>
+          <p class="cumulative">累计参与(天)</p>
+        </div>
+        <div class="cumulative_flex cumulative_flex02">
+          <p class="num" id="carbon"></p>
+          <p class="cumulative">累计碳减排(kg)</p>
+        </div>
+        <div class="cumulative_flex cumulative_flex03">
+          <p class="num" id="clothes"></p>
+          <p class="cumulative">累计捐赠衣服(kg)</p>
+        </div>
+      </div>
+    </div>
+  </a>
+  <div class="mg_t15 item_line">
+    <a href="my_tqb_balance.html">
+      <div class="item_bottom_line">
+        <p class="balance">账户余额</p>
+        <p id="accountBalance" class="gray"></p>
+      </div>
+    </a>
+
+    <a class="disbox_wrap" id="accountTakeCash" href="my_tqb_bindingAlipay.html" style="width:100%;display:none;">
+      <div class="item_bottom_line" id="accountTakeCash_wrap">
+        <p class="account">账户提现</p>
+        <p id="bindingAlipay" class="gray font12"></p>
+      </div>
+    </a>
+    <a href="my_tqb_recycle.html">
+      <div class="item_bottom_line item_bottom_none">
+        <p class="record">回收记录</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="item_line mg_t15">
+    <a href="shop_order_list.html">
+      <div class="item_bottom_line">
+        <p class="goods">超市订单</p>
+      </div>
+    </a>
+    <a href="historical_address.html">
+      <div class="item_bottom_line">
+        <p class="serve">服务地址</p>
+      </div>
+    </a>
+
+    <a href="javascript:;" onclick="cycleService();return false;">
+      <div class="item_bottom_line item_bottom_none">
+        <p class="cycle">周期服务</p>
+        <p id="cycleServiceText" class="gray"></p>
+      </div>
+    </a>
+  </div>
+
+  <div class="item_line mg_t15">
+    <a href="my_tqb_complaint.html">
+      <div class="item_bottom_line">
+        <p class="suggest">建议和反馈</p>
+      </div>
+    </a>
+    <a href="tel:400-051-1199">
+      <div class="item_bottom_line item_bottom_none">
+        <p class="hotline">服务热线</p>
+        <p class="gray">400-051-1199</p>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<footer class="navbar">
+  <div class="flex">
+    <a href="index.html">
+      <p class="recycling icon"></p>
+      <p class="subtitle">上门回收</p>
+    </a>
+  </div>
+  <div class="flex">
+    <a href="shop_index.html" onclick="return validateLogin();">
+      <p class="shoping icon" onclick="return validateLogin();"></p>
+      <p class="subtitle" onclick="return validateLogin();">网上商城</p>
+    </a>
+  </div>
+  <div class="flex active">
+    <a href="my_tqb.html">
+      <p class="personal icon" onclick="return validateLogin();"></p>
+      <p class="subtitle" onclick="return validateLogin();">个人中心</p>
+    </a>
+  </div>
+</footer>
+
+<script src="js/import_commonjs.js"></script>
+<script type="text/javascript">
+
+  $(".item_bottom_line").append('<span class="arrow_right"></span>');
+  $(".head_item").append('<span class="arrow_right"></span>');
+
+  sendGetUserInfoReqeust();
+  var inviteCode;
+  var addressType;
+  //获取用户信息
+  function sendGetUserInfoReqeust()
+  {
+    postRequest(ApiGetCustomerInfoActioinName,{},function(result){
+
+      if(result.isSuccess())
+      {
+        var userInfo = result.data;
+        var binddir = userInfo.binddir;
+        $(".nickname").html(userInfo.nickName);
+        $("#phone").html(getLoginUserEncryptPhone());
+        $("#inviteCode").text(userInfo.inviteCode);
+        $("#accountBalance").html(userInfo.accountBalance+"元");
+        $("#date").text(userInfo.createDays);
+        $("#carbon").text(userInfo.totalEmissions);
+        $("#clothes").text(userInfo.clothesSum);
+
+        if(binddir == 0)
+        {
+          $("#accountTakeCash").attr("href","my_tqb_withdrawCash.html");
+          $("#bindingAlipay").html("");
+        }
+        else if(binddir == 1)
+        {
+          $("#accountTakeCash").attr("href","my_tqb_bindingAlipay.html");
+          $("#bindingAlipay").html(userInfo.bindmes);
+        }
+
+        var customerType = userInfo.customerType;
+
+        if(customerType==2)
+        {
+          $("#accountTakeCash").show();
+        }
+        addressType = userInfo.addressType;
+        if(addressType=="0")
+        {
+          $("#cycleServiceText").text("请先设置默认地址");
+
+        }
+        else if(addressType=="1")
+        {
+          $("#cycleServiceText").text("");
+
+        }
+      }
+
+    },null);
+
+  }
+  //周期服务
+  function cycleService()
+  {
+
+    if(addressType=="0")
+    {
+      locationRelace("historical_address_new.html?redir=center");
+
+    }
+    else if(addressType=="1")
+    {
+      locationRelace("my_tqb_remind.html");
+    }
+
+  }
+
+  function toShare()
+  {
+    var inviteCode = $("#inviteCode").text();
+    var finalurl = "my_tqb_inviteCode.html?inviteCode="+encodeURI(inviteCode);
+
+    locationRelace(finalurl);
+  }
+
+</script>
+
+</body>
+</html>

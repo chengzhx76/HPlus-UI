@@ -1,0 +1,173 @@
+body {
+  font-size: 12px;
+  color: #969696;
+  font-family: Helvetica,Droidsansfallback;
+  position:relative;
+  background: #F0EFF5;
+}
+ul, li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+body, h1, h2, h3, h4, h5, h6, p, div, ul, li, a, button, section, figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+.header .slide {
+  height: 160px;
+}
+.header .slide .dot span{
+  background: #ffffff;
+}
+.header .slide .dot .cur{
+  background-color:#FF5A1E;
+  border: 1px solid #FF5A1E;
+}
+.header .notify {
+  height: 38px;
+  background: #FFFFFF;
+  border-top: solid 1px #A9A9A9;
+  border-bottom: solid 1px #A9A9A9;
+}
+.header .notify .icon {
+  height: 28px;
+  width: 38px;
+  float: left;
+  border-right: solid 1px #A9A9A9;
+  font-size: 24px;
+  line-height: 28px;
+  margin: 5px 0;
+  padding-left: 12px;
+  color:#FF6600;
+  -webkit-transition: font-size 0.25s ease-out 0s;
+  -moz-transition: font-size 0.25s ease-out 0s;
+  transition: font-size 0.25s ease-out 0s;
+}
+.header .notify .notify-text {
+  height: 38px;
+  line-height: 38px;
+  color: black;
+  font-size: 16px;
+  text-indent: 10px;
+}
+.content {
+  margin-top: 10px;
+  background: #ffffff;
+}
+.content .bd {
+  padding: 0 2px;
+}
+.content figure {
+  display: block;
+  border: solid 1px #EFEFEF;
+  position: relative;
+}
+.content figure a {
+  display: block;
+  height: 105px;
+}
+.content figure a img {
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+.content figure figcaption {
+  /*background: darkblue;*/
+}
+.content figure figcaption .title {
+  height: 24px;
+  font-size: 20px;
+  color: #333;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-indent: 5px;
+  display: block;
+}
+.content figure figcaption .desc {
+  height: 16px;
+  font-size: 10px;
+  font-style: normal;
+  display: block;
+  /*background: gold;*/
+}
+.content figure figcaption .info {
+  height: 30px;
+  /*background: darkblue;*/
+}
+.content figure figcaption .info .price {
+  height: 38px;
+  width: 50px;
+  font-size: 16px;
+  line-height: 35px;
+  color: #EF4F4F;
+  display: block;
+  float: left;
+  margin-left: 2px;
+}
+.content figure figcaption .info .price strong {
+  padding-top: 6px;
+  font-size: 18px;
+  font-weight: normal;
+}
+.content figure figcaption .info .icon {
+  font-size: 22px;
+  color:#EF4F4F;
+  float: right;
+  display: block;
+  margin-right: 6px;
+}
+.content figure figcaption .tag {
+  color: #FFF;
+  font-size: 12px;
+  padding: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #FF6600;
+}
+
+.into {
+  margin-top: 60px;
+  margin-bottom: 70px;
+}
+.cart {
+  height: 65px;
+  width: 65px;
+  margin: 0 auto;
+  display: block;
+  position:fixed;
+  left:0;
+  right: 0;
+  bottom: 10px;
+  border-top: solid 1px #cccccc;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background: #F7F7FA;
+}
+.cart .c-icon {
+  height: 53px;
+  width: 53px;
+  margin: 0 auto;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: #FF5A1E;
+}
+.cart .c-icon .icon {
+  height: 40px;
+  width: 100%;
+  font-size: 36px;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+}
+.cart .c-txt {
+  height: 22px;
+  width: 100%;
+  line-height: 25px;
+  color: #9E9E9F;
+  font-size: 15px;
+  display: block;
+  text-align: center;
+}
