@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <link rel="stylesheet" href="style/weui.css"/>
+  <link rel="stylesheet" href="style/weui2.css"/>
+</head>
+<body>
+<div class="weui_cell">
+  <div class="weui_cell_hd">
+    <label for="" class="">弹出单选:</label></div>
+    <div class="weui_cell_bd weui_cell_primary">
+    <input class="weui_input" type="text" value="" id='d2'/>
+  </div>
+</div>
+</body>
+<script src="zepto.min.js"></script>
+<script src="example.js"></script>
+<script src="picker.js"></script>
+<script>
+  $("#d2").select({
+    title: "选择爱机",
+    items: [
+      {
+        title: "iPhone 3GS",
+        value: "001",
+      },
+      {
+        title: "iPhone 5",
+        value: "002",
+      },
+      {
+        title: "iPhone 5S",
+        value: "003",
+      }
+    ],
+    onChange: function (d) {
+      $.alert("你选择了" + d.values + d.titles);
+    }
+  });
+</script>
+</html>
